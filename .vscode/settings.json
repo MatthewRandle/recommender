@@ -1,0 +1,34 @@
+{
+    "liveSassCompile.settings.formats": [
+        {
+            "extensionName": ".css",
+            "savePath": "/stylesheets/css"
+        }
+    ],
+    "liveSassCompile.settings.excludeList": [
+        "**/node_modules/**",
+        ".vscode/**"
+    ],
+    "liveSassCompile.settings.generateMap": true,
+    "liveSassCompile.settings.autoprefix": [
+        "> 1%",
+        "last 2 versions"
+    ],
+    "LineCount.excludes": [
+        "**/.vscode/**",
+        "**/node_modules/**",
+        "**/css/**",
+        "**/assets/**",
+        "**/design/**",
+        "**/writeups/**",
+        "**/tutorials/**",
+        "**/database/**",
+        "**/*.json"
+    ],
+    "cSpell.words": [
+        "Unban",
+        "datasets",
+        "prefetch",
+        "scrollbar"
+    ]
+}

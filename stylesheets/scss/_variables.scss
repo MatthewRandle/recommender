@@ -1,0 +1,20 @@
+$green: #4BFFCA;
+$red: #F2799C;
+$darkGray: #2c2c2c;
+$lightGray: #4e4e4e;
+$borderColor: #E9E9E9;
+$lightPurple: #F5FAFF;
+$OneDarkBG: rgb(24, 30, 52);
+$darkBlue: #043C47;
+$darkRed: #2F0303;
+
+/* Text on white color */
+$redOnWhite: #D5154C;
+
+$materialBG: #263238;
+
+@mixin desktop-down() {@media only screen and (max-width: 1200px) { @content; }}
+
+@mixin tablet-down() {@media only screen and (max-width: 768px) { @content; }}
+
+@mixin phone-down() {@media only screen and (max-width: 480px) { @content; }}

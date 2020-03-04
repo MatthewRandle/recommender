@@ -1,0 +1,270 @@
+/* Text on white color */
+.pricing_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.pricing_features,
+.pricing_faqs,
+.pricing {
+  width: 725px;
+}
+
+.pricing {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: 75px;
+  padding-bottom: 50px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: relative;
+}
+
+.pricing:before {
+  content: " ";
+  background: #F5FAFF;
+  width: 100vw;
+  height: 400px;
+  position: absolute;
+  z-index: -2;
+  bottom: 0px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.pricing h1 {
+  margin-bottom: 10px;
+  width: 600px;
+  text-align: center;
+  font-family: "Roboto Slab", sans-serif;
+  color: #2c2c2c;
+  line-height: 1.1em;
+  font-size: 2.5rem;
+}
+
+.pricing_subheader {
+  color: gray;
+}
+
+.pricing_models,
+.pricing_model,
+.pricing_model a,
+.pricing_model span,
+.pricing_mostPopular,
+.pricing_ctas {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.pricing_models {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 50px;
+  width: 100%;
+}
+
+.pricing_model {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  background-color: white;
+}
+
+.pricing_model#personal {
+  width: 48%;
+  height: 350px;
+  border: 3px solid #2c2c2c;
+  margin-top: auto;
+  color: #2c2c2c;
+}
+
+.pricing_model#personal a {
+  background-color: #2c2c2c;
+  color: white;
+}
+
+.pricing_model#business {
+  height: 475px;
+  z-index: 1;
+  border: 5px solid #4BFFCA;
+  width: 48%;
+  color: #2c2c2c;
+}
+
+.pricing_model#business a {
+  background-color: #4BFFCA;
+  color: #043C47;
+}
+
+.pricing_model#enterprise {
+  background: #2c2c2c;
+  color: #F5FAFF;
+  width: 100%;
+  height: 150px;
+  margin-top: 10px;
+}
+
+.pricing_model#enterprise a {
+  background-color: #F5FAFF;
+  color: #2c2c2c;
+}
+
+.pricing_model h3 {
+  font-size: 1.5rem;
+}
+
+.pricing_model span {
+  margin-top: 20px;
+}
+
+.pricing_model h3,
+.pricing_model span h2,
+.pricing_model a,
+.pricing_header,
+.pricing_mostPopular,
+.pricing_cta h2 {
+  font-family: "Roboto Slab", sans-serif;
+}
+
+.pricing_model span h2,
+.pricing_model a,
+.pricing_header,
+.pricing_mostPopular,
+.pricing_cta h2 {
+  color: #2c2c2c;
+}
+
+.pricing_mostPopular {
+  background-color: #4BFFCA;
+  color: #043C47;
+  width: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 0.8rem;
+  padding: 7px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.pricing_model h3 {
+  padding: 20px;
+}
+
+.pricing_model span {
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.pricing_model span h2 {
+  font-size: 2rem;
+  margin-right: 5px;
+}
+
+.pricing_model a {
+  position: absolute;
+  bottom: 0;
+  border-radius: 10px 10px 0 0;
+  width: 175px;
+  height: 40px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  -webkit-transition: border-radius 0.2s linear;
+  transition: border-radius 0.2s linear;
+}
+
+.pricing_model a:hover {
+  border-radius: 2px;
+}
+
+.pricing_header {
+  margin-top: 100px;
+  margin-bottom: 40px;
+  font-size: 2rem;
+}
+
+.pricing_ctas {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 250px;
+  width: 100%;
+  background-color: #F5FAFF;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  margin-top: 100px;
+}
+
+.pricing_cta {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 900px;
+}
+
+.pricing_cta h2 {
+  line-height: 1em;
+  font-size: 2rem;
+}
+
+.pricing_cta p {
+  font-family: "Roboto", sans-serif;
+  color: #2c2c2c;
+  margin-top: 10px;
+}
+
+.pricing_cta_getStarted {
+  padding: 15px;
+  padding-left: 60px;
+  padding-right: 60px;
+  font-family: "Roboto Slab", sans-serif;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  background-color: #4BFFCA;
+  color: #043C47;
+}
+/*# sourceMappingURL=Pricing.css.map */

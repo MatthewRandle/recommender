@@ -1,0 +1,135 @@
+/* Text on white color */
+.code_container {
+  font-size: .7rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+}
+
+@media only screen and (max-width: 1200px) {
+  .code_container {
+    font-size: .6rem;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .code_container {
+    font-size: .5rem;
+  }
+}
+
+.code_container pre span,
+.code {
+  font-size: .7rem;
+}
+
+@media only screen and (max-width: 1200px) {
+  .code_container pre span,
+  .code {
+    font-size: .75rem;
+  }
+}
+
+.code_pre_container {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  line-height: 1.05rem;
+}
+
+.code_gutter {
+  width: 50px;
+  font-family: monospace;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  counter-reset: line;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background: #181e34;
+}
+
+@media only screen and (max-width: 768px) {
+  .code_gutter {
+    width: 35px;
+  }
+}
+
+.code_gutter span {
+  font-size: .7rem;
+  line-height: 1.09rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+@media only screen and (max-width: 1200px) {
+  .code_gutter span {
+    font-size: .75rem;
+    line-height: 22.5px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .code_gutter span {
+    line-height: 20.25px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .code_gutter span {
+    line-height: 18px;
+  }
+}
+
+.code_gutter span:before {
+  counter-increment: line;
+  content: counter(line);
+  color: #a5a5a5;
+}
+
+.code {
+  padding: 10px;
+  padding-left: 0;
+}
+
+.code_filename {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  color: #5C6370;
+  font-family: monospace;
+}
+
+@media only screen and (max-width: 768px) {
+  .code_filename {
+    right: 2px;
+    top: 2px;
+  }
+}
+
+.code_pre_container {
+  font-size: 0.8rem;
+}
+
+@media only screen and (max-width: 480px) {
+  .code_pre_container {
+    font-size: 0.7rem;
+  }
+}
+
+.pre {
+  padding: 3px;
+  padding-left: 10px;
+  padding-right: 10px;
+  display: inline;
+}
+/*# sourceMappingURL=Code_old.css.map */

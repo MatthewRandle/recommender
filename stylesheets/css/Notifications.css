@@ -1,0 +1,48 @@
+/* Text on white color */
+.notification_editorSaved {
+  background-color: #4BFFCA;
+  font-family: "Roboto Slab", serif;
+  font-weight: bold;
+}
+
+.notification_editorSaved .Toastify__close-button {
+  color: #2c2c2c;
+}
+
+.notification_editorSaved_body {
+  color: #2c2c2c;
+}
+
+.notification_editorSaved_progress {
+  background-color: #2c2c2c !important;
+}
+
+.notification_error,
+.Toastify__toast--error {
+  font-family: "Roboto", sans-serif;
+  background-color: #F2799C !important;
+  color: #2c2c2c;
+}
+
+.notification_error .Toastify__close-button,
+.Toastify__toast--error .Toastify__close-button {
+  color: #2c2c2c;
+}
+
+.notification_error_progress {
+  background-color: #2c2c2c !important;
+}
+
+.notification_error p {
+  margin-bottom: 5px;
+}
+
+.notification_error .error_message {
+  font-size: 1rem;
+  line-height: 1.3em;
+}
+
+.notification_error .error_code {
+  font-size: 0.7rem;
+}
+/*# sourceMappingURL=Notifications.css.map */

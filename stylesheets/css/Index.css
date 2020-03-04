@@ -1,0 +1,202 @@
+/* Text on white color */
+.home h2,
+.home p {
+  color: #2c2c2c;
+  font-family: "Roboto Slab", sans-serif;
+}
+
+.home h2 {
+  font-weight: bold;
+  font-size: 1.75rem;
+  line-height: 1.1em;
+}
+
+.home p {
+  line-height: 1.4em;
+  margin-top: 10px;
+}
+
+.home span {
+  position: relative;
+}
+
+.home span::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  bottom: 3px;
+  left: 0;
+  z-index: -1;
+  border-bottom: 5px solid #4BFFCA;
+}
+
+.hero h1 span::after {
+  bottom: 4px;
+  border-bottom: 7px solid #4BFFCA;
+}
+
+.hero,
+.home_commentSection,
+.home_authentication {
+  width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 500px;
+  color: #2c2c2c;
+}
+
+.hero:before {
+  content: " ";
+  background-color: #F5FAFF;
+  width: 1200px;
+  height: 1000px;
+  position: absolute;
+  z-index: -2;
+  border-radius: 50%;
+  -webkit-transform: translateX(-550px);
+          transform: translateX(-550px);
+  top: -400px;
+}
+
+.hero_content h1,
+.hero_content button {
+  font-family: "Roboto Slab", sans-serif;
+  font-weight: bold;
+}
+
+.hero_content p,
+.hero_content button {
+  margin-top: 20px;
+}
+
+.hero_content h1 {
+  width: 550px;
+  font-size: 2.5rem;
+}
+
+.hero_content p {
+  font-family: "Roboto", sans-serif;
+  line-height: 1.3em;
+  width: 80%;
+  font-size: 1rem;
+}
+
+.hero_content button {
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  margin-right: 20px;
+  font-size: 0.9rem;
+  border-radius: 3px;
+  cursor: pointer;
+  outline: none;
+}
+
+.hero_tryButton {
+  background-color: #F2799C;
+  color: #2F0303;
+  position: relative;
+  padding: 7px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.hero_tryButton:after {
+  content: "(no credit card required)";
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  top: 100%;
+  font-weight: normal;
+  font-size: 0.6rem;
+  white-space: nowrap;
+  margin-top: 5px;
+  cursor: auto;
+  color: #2c2c2c;
+  pointer-events: none;
+  font-family: "Roboto", sans-serif;
+}
+
+.hero_demoButton {
+  background-color: #2c2c2c;
+  color: white;
+  padding: 7px;
+  padding-left: 35px;
+  padding-right: 35px;
+}
+
+.hero img {
+  width: 500px;
+}
+
+.home p {
+  font-family: "Roboto", sans-serif;
+}
+
+.home_commentSection {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 250px;
+}
+
+.home_commentSection_content {
+  width: 40%;
+  text-align: end;
+}
+
+.home_authentication,
+.home_authentication_content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.home_authentication {
+  margin-top: 300px;
+}
+
+.home_authentication_content {
+  width: 60%;
+  text-align: center;
+}
+
+.home_authentication img#auth {
+  width: 250px;
+  margin-top: 50px;
+}
+
+.home_authentication img#social {
+  height: 40px;
+  margin-top: 150px;
+}
+
+.home_commentSection_animation {
+  width: 50%;
+  height: 170px;
+}
+/*# sourceMappingURL=Index.css.map */
