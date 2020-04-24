@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "nodemon backend/index.js",
     "build": "ANALYZE=true next build",
-    "start": "NODE_ENV=production node backend/index.js -p $PORT"
+    "start": "NODE_ENV=production node backend/index.js -p $PORT",
+    "heroku-postbuild": "npm run build"
   },
   "author": "",
   "license": "ISC",
