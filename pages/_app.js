@@ -30,8 +30,6 @@ class MyApp extends App {
         return (
             <Provider store={store}>
                 <div className="app">
-                    <link rel="stylesheet" type="text/css" href={"/_next/static/css/styles.chunk.css?v=" + Date.now()} />
-
                     <Head>
                         <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab:700&display=swap" rel="stylesheet" />
                         {/* <link href="https://fonts.googleapis.com/css?family=Roboto+Slab|Zilla+Slab:400,700" rel="stylesheet" />
