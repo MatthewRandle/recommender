@@ -1,0 +1,57 @@
+c = customer who purchased
+|c| = number of non-X purchaes made by c
+Py = |Y purchaces| / |All purchaces|
+
+
+***The way this works is for example our user has 150 items on their list, lets say the 
+first is Harry Potter 1,  we look for all people in our system that have HP1, and curate
+a big list of all movies we find (no repeats). We then go through each of thesemovies, 
+seeing how much they score with the formula. Then, voila! We have a list of all the movies
+relevant to Harry Potter 1, from most to least***
+
+
+70,000 total movies added to peoples lists
+
+
+Trying to find out how to recommend Interstellar to users, based off of Harry Potter 1:
+
+	User has 150 items on their list, one of which is Harry Potter 1
+	200 people have Harry Potter 1 on their list (X)
+	400 people have Interstellar on their list
+	30 people have BOTH HP and Interstellar on their list = Nxy
+
+	Exy 	= 1 - (1 - (400 / 70000))^149
+		= 1 - 0.42576380663
+		= 0.57423619337
+
+	Nxy = 30
+
+	Score 	= | Nxy - Exy | / sqr(Exy)
+		= | 29.4257638066 | / 0.75778373786
+		= 29.4257638066 / 0.75778373786
+		= 38.8313477005
+
+Score for Harry Potter 2 based off of Harry Potter 1
+
+	180 people have BOTH HP1 and HP2 on their list = Nxy
+	230 people have HP2
+	
+	Exy 	= 1 - (0.99671428571)^149
+		= 0.61239517671
+
+	Nxy = 180
+
+	Score = 229.232689836
+
+
+Score for Twilight against Harry Potter 1
+
+	2 people have both
+	120 have Twilight
+
+	Exy 	= 1 - (0.99828571429)^119
+		= 0.1846803685
+
+	Nxy = 2
+
+	Score = 4.22418313262

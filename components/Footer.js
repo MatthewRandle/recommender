@@ -23,11 +23,6 @@ const Footer = () => {
                     <Link href="/cookie-policy"><a>Cookie Policy</a></Link>
                     <Link href="/terms-and-conditions"><a>Terms & Conditions</a></Link>
                 </div>
-
-                <div className="footer_social">
-                    <img src="/twitter.png" alt="Twitter Logo" />
-                    <img src="/facebook.png" alt="Facebook Logo" />
-                </div>
             </div>
 
             <div className="footer_bottom">

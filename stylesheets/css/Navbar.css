@@ -33,22 +33,54 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  width: 1200px;
+  width: 1150px;
   height: 50px;
   font-size: 0.75rem;
   font-family: "Roboto", sans-serif;
 }
 
-.navbar img {
+@media only screen and (max-width: 1200px) {
+  .navbar {
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 0.65rem;
+  }
+}
+
+.navbar_left img {
   height: 35px;
   margin-right: 20px;
   -webkit-transform: translateY(3px);
           transform: translateY(3px);
 }
 
-.navbar p,
-.navbar a {
+.navbar_right img {
+  display: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .navbar_right img {
+    display: inline;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .navbar_left a:not(:first-of-type),
+  .navbar_right a {
+    display: none;
+  }
+}
+
+.navbar_left p,
+.navbar_left a {
   margin-right: 30px;
+  cursor: pointer;
+  color: #2c2c2c;
+}
+
+.navbar_right a {
+  margin-left: 30px;
   cursor: pointer;
   color: #2c2c2c;
 }
@@ -84,6 +116,81 @@
 .navbar_authButton:after {
   border-top-color: #4BFFCA;
   border-width: 9px;
+  -webkit-transform: rotateZ(90deg);
+          transform: rotateZ(90deg);
+}
+
+.navbarMobile {
+  position: absolute;
+  background-color: white;
+  width: 100vw;
+  height: 100vh;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: 75px;
+}
+
+.navbarMobile img {
+  width: 200px;
+}
+
+.navbarMobile a:not(:last-of-type) {
+  margin-bottom: 50px;
+  font-size: 1.5rem;
+  color: #2c2c2c;
+  font-family: "Roboto", sans-serif;
+}
+
+.navbarMobile p {
+  font-size: 2rem;
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 20px;
+}
+
+.navbarMobile_authButton {
+  background-color: #4BFFCA;
+  color: #043C47;
+  padding: 14px;
+  padding-left: 40px;
+  padding-right: 40px;
+  font-family: "Roboto Slab", sans-serif;
+  font-weight: bold;
+  border: none;
+  border-radius: 30px;
+  position: relative;
+  outline: none;
+  cursor: pointer;
+  font-size: 1.4rem;
+  margin-right: 0px !important;
+}
+
+.navbarMobile_authButton:after, .navbarMobile_authButton:before {
+  top: 60%;
+  right: 0;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.navbarMobile_authButton:after {
+  border-top-color: #4BFFCA;
+  border-width: 18px;
   -webkit-transform: rotateZ(90deg);
           transform: rotateZ(90deg);
 }

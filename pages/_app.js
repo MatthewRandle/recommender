@@ -11,6 +11,7 @@ import Error from "../components/Error";
 import rootReducer from "../utils/rootReducer";
 
 import "../public/empty.css";
+import "../stylesheets/css/Footer.css";
 import "../stylesheets/css/Navbar.css";
 import "../stylesheets/css/Reset.css";
 

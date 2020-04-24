@@ -26,21 +26,49 @@
 
 .navbar {
     justify-content: space-between;
-    width: 1200px;
+    width: 1150px;
     height: 50px;
     font-size: 0.75rem;
     font-family: "Roboto", sans-serif;
+
+    @include desktop-down() {
+        width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+        font-size: 0.65rem;
+    }
 }
 
-.navbar img {
+.navbar_left img {
     height: 35px;
     margin-right: 20px;
     transform: translateY(3px);
 }
 
-.navbar p,
-.navbar a {
+.navbar_right img {
+    display: none;
+
+    @include tablet-down() {
+        display: inline;
+    }
+}
+
+.navbar_left a:not(:first-of-type),
+.navbar_right a {
+    @include tablet-down() {
+        display: none;
+    }
+}
+
+.navbar_left p,
+.navbar_left a {
     margin-right: 30px;
+    cursor: pointer;
+    color: $darkGray;
+}
+
+.navbar_right a {
+    margin-left: 30px;
     cursor: pointer;
     color: $darkGray;
 }
@@ -76,6 +104,75 @@
     &:after {
         border-top-color: $green;
         border-width: 9px;
+        transform: rotateZ(90deg);
+        //margin-left: -10px;
+    }
+}
+
+.navbarMobile {
+    position: absolute;
+    background-color: white;
+    width: 100vw;
+    height: 100vh;
+    z-index: 5;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 75px;
+}
+
+.navbarMobile img {
+    width: 200px;
+}
+
+.navbarMobile a:not(:last-of-type) {
+    margin-bottom: 50px;
+    font-size: 1.5rem;
+    color: $darkGray;
+    font-family: "Roboto", sans-serif;
+}
+
+.navbarMobile p {
+    font-size: 2rem;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 20px;
+}
+
+.navbarMobile_authButton {
+    background-color: $green;
+    color: $darkBlue;
+    padding: 14px;
+    padding-left: 40px;
+    padding-right: 40px;
+    font-family: "Roboto Slab", sans-serif;
+    font-weight: bold;
+    border: none;
+    border-radius: 30px;
+    position: relative;
+    outline: none;
+    cursor: pointer;
+    font-size: 1.4rem;
+    margin-right: 0px !important;
+
+    &:after,
+    &:before {
+        top: 60%;
+        right: 0;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+    }
+
+    &:after {
+        border-top-color: $green;
+        border-width: 18px;
         transform: rotateZ(90deg);
         //margin-left: -10px;
     }

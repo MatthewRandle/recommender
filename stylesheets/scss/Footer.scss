@@ -1,0 +1,100 @@
+@import "_variables";
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    border-top: 1px solid rgba($color: #000000, $alpha: 0.2);
+}
+
+.footer_bottom_content {
+    width: 1200px;
+}
+
+.footer_top,
+.footer_bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.footer h2 {
+    font-family: "Roboto Slab", sans-serif;
+}
+
+.footer_top {
+    width: 1200px;
+    height: 300px;
+}
+
+.footer_top h2,
+.footer_top p {
+    color: $darkGray;
+}
+
+.footer_bottom {
+    background-color: $darkGray;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 85px;
+}
+
+.footer_bottom_content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer_top img {
+    width: 200px;
+}
+
+.footer_column {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer_top a,
+.footer_top p {
+    color: $darkGray;
+    font-family: "Roboto", sans-serif;
+}
+
+.footer_column a,
+.footer_top p {
+    margin-top: 10px;
+}
+
+.footer_bottom h2,
+.footer_bottom p {
+    color: rgb(238, 238, 238);
+}
+
+.footer_bottom p {
+    margin-top: 10px;
+}
+
+.footer_bottom form {
+    height: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.footer_bottom form button {
+    font-family: "Roboto Slab", sans-serif;
+    color: $darkGray;
+    background-color: $green;
+    border: none;
+    height: 100%;
+    padding-right: 20px;
+    padding-left: 20px;
+    cursor: pointer;
+}
+
+.footer_bottom form input {
+    height: 100%;
+    width: 300px;
+    border: none;
+}

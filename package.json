@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon backend/index.js",
+    "build": "ANALYZE=true next build",
+    "start": "NODE_ENV=production node backend/index.js -p $PORT"
   },
   "author": "",
   "license": "ISC",
@@ -14,6 +16,7 @@
     "body-parser": "^1.19.0",
     "cookie-session": "^1.4.0",
     "express": "^4.17.1",
+    "helmet": "^3.21.3",
     "mysql": "^2.18.1",
     "next": "^9.2.1",
     "next-redux-wrapper": "^4.0.1",
