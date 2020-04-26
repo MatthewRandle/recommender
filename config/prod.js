@@ -4,5 +4,7 @@ module.exports = {
     databaseUser: process.env.DATABASE_USER, 
     databasePassword: process.env.DATABASE_PASSWORD, 
     database: process.env.DATABASE,
-    TMDBKey: process.env.TMDB_KEY
+    TMDBKey: process.env.TMDB_KEY,
+    link: "https://recommender.herokuapp.com",
+    sendgridKey: process.env.SENDGRID_KEY
 };

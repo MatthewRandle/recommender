@@ -26,7 +26,9 @@ const limiter = new RateLimit({
 }); */
 
 app.prepare()
-	.then(() => {
+    .then(() => {
+        require("./services/passport-local");
+
 		const server = express();
 
 		server.use(helmet());
@@ -41,7 +43,7 @@ app.prepare()
 			cookieSession({
 				maxAge: 30 * 24 * 60 * 60 * 1000,
 				keys: [keys.cookieKey],
-				sameSite: "lax",
+				sameSite: "Strict",
 				secure: process.env.NODE_ENV === "production" ? true : false
 			})
 		);
@@ -62,9 +64,9 @@ app.prepare()
             res.sendFile(path.join(__dirname, '../static', 'sitemap.xml'))
 		}) */
 
-		server.get("/dashboard/domain/:hostname", (req, res) => {
-			const actualPage = "/dashboard/domain";
-			const queryParams = { hostname: req.params.hostname };
+		server.get("/tv/:id", (req, res) => {
+			const actualPage = "/tv";
+            const queryParams = { id: req.params.id };
 			app.render(req, res, actualPage, queryParams);
 		});
 

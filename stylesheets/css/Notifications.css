@@ -1,0 +1,75 @@
+/* Text on white color */
+.notification_editorSaved {
+  background-color: white !important;
+  font-family: "Roboto Slab", serif;
+  font-weight: bold;
+  border-top: 4px solid #e1d1ff;
+}
+
+.notification_editorSaved .Toastify__close-button {
+  color: #2c2c2c;
+}
+
+.notification_editorSaved_body {
+  color: #2c2c2c;
+  padding: 15px;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.notification_editorSaved_progress {
+  background-color: #2c2c2c !important;
+}
+
+.Toastify__toast-container {
+  width: auto !important;
+}
+
+.Toastify__toast--error {
+  border-top: 4px solid #F2799C;
+}
+
+.notification_error {
+  font-family: "Roboto", sans-serif;
+  background-color: white !important;
+  color: #2c2c2c;
+  padding: 20px;
+  padding-left: 40px;
+  padding-right: 40px;
+  max-width: 500px !important;
+  z-index: 100;
+}
+
+.notification_error .Toastify__close-button {
+  color: #2c2c2c;
+}
+
+@media only screen and (max-width: 768px) {
+  .notification_error {
+    width: 480px !important;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .notification_error {
+    width: 90% !important;
+  }
+}
+
+.notification_error_progress {
+  background-color: #2c2c2c !important;
+}
+
+.notification_error p {
+  margin-bottom: 10px;
+}
+
+.notification_error .error_message {
+  font-size: 1.2rem;
+  line-height: 1.3em;
+}
+
+.notification_error .error_code {
+  font-size: 0.7rem;
+}
+/*# sourceMappingURL=Notifications.css.map */

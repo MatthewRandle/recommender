@@ -86,7 +86,7 @@
 }
 
 .navbar_authButton {
-  background-color: #4BFFCA;
+  background-color: #e1d1ff;
   color: #043C47;
   padding: 7px;
   padding-left: 20px;
@@ -114,7 +114,7 @@
 }
 
 .navbar_authButton:after {
-  border-top-color: #4BFFCA;
+  border-top-color: #e1d1ff;
   border-width: 9px;
   -webkit-transform: rotateZ(90deg);
           transform: rotateZ(90deg);
@@ -161,7 +161,7 @@
 }
 
 .navbarMobile_authButton {
-  background-color: #4BFFCA;
+  background-color: #e1d1ff;
   color: #043C47;
   padding: 14px;
   padding-left: 40px;
@@ -189,7 +189,7 @@
 }
 
 .navbarMobile_authButton:after {
-  border-top-color: #4BFFCA;
+  border-top-color: #e1d1ff;
   border-width: 18px;
   -webkit-transform: rotateZ(90deg);
           transform: rotateZ(90deg);

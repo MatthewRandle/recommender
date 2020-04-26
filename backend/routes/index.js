@@ -1,3 +1,5 @@
 module.exports = app => {
-    require("./authRoutes")(app); 
+    require("./auth")(app);
+    require("./email")(app);
+    require("./lists")(app); 
 };

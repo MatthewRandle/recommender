@@ -1,0 +1,152 @@
+@import "_variables";
+
+.auth {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 70px);
+    padding-bottom: 50px;
+    color: $darkGray;
+
+    @include phone-down() {
+        padding-bottom: 70px;
+    }
+}
+
+.auth_toggles {
+    display: flex;
+    align-items: baseline;
+}
+
+.auth_toggles h1 {
+    font-family: "Roboto Slab", sans-serif;
+}
+
+.auth_toggles a {
+    font-family: "Roboto", sans-serif;
+    font-size: 1rem;
+    margin-left: 20px;
+    color: $darkGray;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.auth form {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 400px;
+    margin-top: 50px;
+
+    @include desktop-down() {
+        height: auto;
+        margin-top: 25px;
+    }
+
+    @include tablet-down() {
+        width: 425px;
+    }
+
+    @include phone-down() {
+        width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+.auth form label {
+    font-family: "Roboto Slab", sans-serif;
+    font-size: 1rem;
+}
+
+.auth form input {
+    @include border;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    font-size: 1rem;
+    border-radius: 5px;
+
+    @include desktop-down() {
+        padding: 10px;
+    }
+}
+
+.auth form button {
+    background-color: $purple;
+    @include border;
+    padding: 10px;
+    font-family: "Roboto Slab", sans-serif;
+    letter-spacing: 3px;
+    font-size: 1rem;
+    margin-top: 30px;
+    cursor: pointer;
+    border-radius: 5px;
+
+    @include desktop-down() {
+        font-size: 1rem;
+    }
+
+    @include phone-down() {
+        font-size: 1.2rem;
+    }
+}
+
+.auth form a {
+    color: $darkGray;
+    text-decoration: underline;
+
+    @include desktop-down() {
+        font-size: 0.8rem;
+    }
+}
+
+.auth_error {
+    position: absolute;
+    right: 0;
+    font-size: 0.8rem;
+    color: $redOnWhite;
+
+    @include desktop-down() {
+        font-size: 0.7rem;
+    }
+}
+
+.auth_error_password {
+    line-height: 1.3em;
+    font-family: "Roboto", sans-serif;
+    color: $redOnWhite;
+    margin-bottom: 15px;
+}
+
+.auth_legal {
+    display: flex;
+    align-items: center;
+    
+    @include phone-down() {
+        flex-wrap: wrap;
+        line-height: 1.3em;
+    }
+}
+
+.auth_legal a {
+    color: $redOnWhite !important;
+    margin-left: 7px;
+    margin-right: 7px;
+}
+
+.auth_success {
+    margin-bottom: 20px;
+    font-family: "Roboto", sans-serif;
+    line-height: 1.3em;
+}
+
+.auth_button_longText {
+    font-size: 0.8rem !important;
+}

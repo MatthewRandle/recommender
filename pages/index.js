@@ -7,14 +7,14 @@ import Navbar from "../components/Navbar";
 
 const Index = () => {
     return(
-        <div>
+        <div style={{ height: "100vh", display: "flex", flexDirection: "column" }}>
             <Head>
                 <title>Find new TV shows and Movies</title>
             </Head>
 
             <Navbar notFixed />
 
-            <div className="home">
+            <div className="home pushFooter">
                  
             </div>
 

@@ -66,15 +66,16 @@ const ReusableNavbar = ({ notFixed, user, setRevealMobileNavbar }) => (
             <div className="navbar_left">
                 <Link href="/"><a><img src="/logo.png" alt="Logo" /></a></Link>
                 <Link href="/"><a>Home</a></Link>
-            </div>
-
-            <div>
-                <input name="search" placeholder="Search for a Movie or TV Show" type="text" />
+                <Link href="/search"><a>Search</a></Link>
+                <Link href="/my-movies"><a>My Movies</a></Link>
+                <Link href="/my-tv-shows"><a>My TV Shows</a></Link>
             </div>
 
             <div className="navbar_right">
-                {user ? <Link href="/dashboard"><a>Dashboard</a></Link> : null}
-                {user ? null : <Link href="/auth/sign-in"><a className="navbar_authButton">Sign In</a></Link>}
+                {user ? 
+                    <Link href="/auth/logout"><a className="navbar_authButton">Sign Out</a></Link>
+                : 
+                    <Link href="/auth/sign-in"><a className="navbar_authButton">Sign In</a></Link>}
                 <img src="/hamburger.svg" alt="Menu button" onClick={() => setRevealMobileNavbar(true)} />
             </div>
         </div>
@@ -87,8 +88,10 @@ const MobileNavbar = ({ user, setRevealMobileNavbar }) => (
 
         <Link href="/"><a><img src="/logo.png" alt="Logo" /></a></Link>
         <Link href="/"><a>Home</a></Link>
+        <Link href="/search"><a>Search</a></Link>
+        <Link href="/my-movies"><a>My Movies</a></Link>
+        <Link href="/my-tv-shows"><a>My TV Shows</a></Link>
         
-        {user ? <Link href="/dashboard"><a>Dashboard</a></Link> : null}
         {user ? null : <Link href="/auth/sign-in"><a className="navbarMobile_authButton">Sign In</a></Link>}       
     </nav>
 );
