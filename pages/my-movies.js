@@ -6,10 +6,10 @@ import Timeline from "../components/lists/Timeline";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import initialSetupFetch from "../utils/initialSetupFetch";
-import { getTVShowList } from "../components/lists/duck";
+import { getMovieList } from "../components/lists/duck";
 
-const MyTvShows = () => {
-    const tvShowList = useSelector(state => state.lists ? state.lists.tvShowList : []);
+const MyMovies = () => {
+    const movieList = useSelector(state => state.lists ? state.lists.movieList : []);
     const [steps, setSteps] = useState([
         "10",
         "9",
@@ -34,7 +34,10 @@ const MyTvShows = () => {
 
             <div className="list_container pushFooter">
                 <div className="list">
-                    <Timeline list={tvShowList} steps={steps} />
+                    {movieList && movieList.length > 0 ?
+                        <Timeline list={movieList} steps={steps} />
+                    : 
+                        <p>No items on list</p>}
                 </div>
             </div>
 
@@ -43,10 +46,10 @@ const MyTvShows = () => {
     );
 };
 
-MyTvShows.getInitialProps = async function ({ store, req }) {
+MyMovies.getInitialProps = async function ({ store, req }) {
     await initialSetupFetch(store, req);
-    await store.dispatch(getTVShowList(req));
+    await store.dispatch(getMovieList(req));
     return { ignore: true };
 };
 
-export default MyTvShows;
+export default MyMovies;

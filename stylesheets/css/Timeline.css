@@ -14,13 +14,32 @@
   position: relative;
 }
 
-.timeline span {
-  position: absolute;
+/* .timeline span {
+    position: absolute;
+} */
+.timeline_item_right,
+.timeline_item_left {
+  background-color: white;
 }
 
-.timeline_item {
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+.timeline_item_left {
+  border: 1px solid red;
+  right: 50%;
+  margin-right: 20px;
+}
+
+.timeline_item_right {
+  border: 1px solid green;
+  left: 50%;
+  margin-left: 20px;
+}
+
+.timeline_item_stacked--odd {
+  background-color: red;
+}
+
+.timeline_item_stacked--even {
+  background-color: blue;
 }
 
 /* TIMELINE RANGE SLIDER */

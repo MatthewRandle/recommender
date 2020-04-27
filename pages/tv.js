@@ -60,7 +60,7 @@ TV.getInitialProps = async function ({ query, store, req, res }) {
         const amountOfSeasons = details.data.seasons ? details.data.seasons.length : 0;
 
         if(amountOfSeasons > 0) {
-            for(let i = 0; i < amountOfSeasons; i++) {
+            for(let i = 1; i < amountOfSeasons; i++) {
                 const creditsLink = `https://api.themoviedb.org/3/tv/${id}/season/${i}/credits?api_key=abed60834d8a74d3044fac789f6c7c07&language=en-US`;
                 const credits = await axios.get(creditsLink);
 

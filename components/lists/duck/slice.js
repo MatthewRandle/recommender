@@ -7,11 +7,16 @@ const ListsSlice = createSlice({
         putTvShowList(state, action) {
             if(state == null) return { ...action.payload };
             state.tvShowList = action.payload.tvShowList;
+        },
+        putMovieList(state, action) {
+            if (state == null) return { ...action.payload };
+            state.movieList = action.payload.movieList;
         }
     }
 });
 
 export const {
-    putTvShowList
+    putTvShowList,
+    putMovieList
 } = ListsSlice.actions;
 export default ListsSlice.reducer;

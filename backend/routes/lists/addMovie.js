@@ -9,13 +9,13 @@ const checkDuplicate = `
 `;
 
 const insertMovie = `
-    INSERT INTO movie
+    INSERT IGNORE INTO movie
     (id, name)
     VALUES(?, ?);
 `;
 
 const insertToMovieList = `
-    INSERT INTO movie_list
+    INSERT IGNORE INTO movie_list
     (user_id, movie_id, rating, added)
     VALUES(?, ?, ?, ?);
 `; 
@@ -50,7 +50,7 @@ module.exports = (app) => {
                             });
                         }
 
-                        connection.query(insertToMovieList, [req.user.id, details.id, req.body.rating, moment().format()], (err) => {
+                        connection.query(insertToMovieList, [req.user.id, details.id, req.body.rating, moment().format()], async (err) => {
                             if (err) {
                                 return connection.rollback(function () {
                                     connection.release();
@@ -59,42 +59,61 @@ module.exports = (app) => {
                             }
 
                             if (details.genres && details.genres.length > 0) {
-                                const { script, params } = createInsertGenreLinkScript(details.genres, details.id);                                
+                                await new Promise(resolve => {
+                                    const { script, params } = createInsertGenreLinkScript(details.genres, details.id);
 
-                                connection.query(script, params, (err) => {
-                                    if (err) {
-                                        return connection.rollback(function () {
-                                            connection.release();
-                                            return res.status(500).send({ code: "ERR_ADD_MOVIE_GENRE_LINKS" });
-                                        });
-                                    }
-
-                                    connection.commit((err) => {
+                                    connection.query(script, params, (err) => {
                                         if (err) {
                                             return connection.rollback(function () {
                                                 connection.release();
-                                                return res.status(500).send({ code: "ERR_ADD_MOVIE_GENRES_COMMIT" });
+                                                return res.status(500).send({ code: "ERR_ADD_MOVIE_GENRE_LINKS" });
                                             });
                                         }
+
+                                        resolve();
                                     });
-
-                                    connection.release();
-                                    return res.end();
-                                });
+                                })
                             }
-                            else {
-                                connection.commit((err) => {
-                                    if (err) {
-                                        return connection.rollback(function () {
-                                            connection.release();
-                                            return res.status(500).send({ code: "ERR_ADD_MOVIE_COMMIT" });
+
+                            if (details.credits && details.credits.cast && details.credits.cast.length > 0) {
+                                await new Promise(resolve => {
+                                    const { script, params } = createInsertActorScript(details.credits.cast);
+
+                                    connection.query(script, params, (err) => {
+                                        if (err) {
+                                            return connection.rollback(function () {
+                                                connection.release();
+                                                return res.status(500).send({ code: "ERR_ADD_MOVIE_ACTORS" });
+                                            });
+                                        }
+
+                                        const { linkScript, linkParams } = createInsertActorLinkScript(details.credits.cast, details.id);
+
+                                        connection.query(linkScript, linkParams, (err) => {
+                                            if (err) {
+                                                return connection.rollback(function () {
+                                                    connection.release();
+                                                    return res.status(500).send({ code: "ERR_ADD_MOVIE_ACTORS_LINKS" });
+                                                });
+                                            }
                                         });
-                                    }
-                                });
 
-                                connection.release();
-                                return res.end();
+                                        resolve();
+                                    });
+                                })
                             }
+                            
+                            connection.commit((err) => {
+                                if (err) {
+                                    return connection.rollback(function () {
+                                        connection.release();
+                                        return res.status(500).send({ code: "ERR_ADD_MOVIE_COMMIT" });
+                                    });
+                                }
+                            });
+
+                            connection.release();
+                            return res.end();
                         });
                     });
                 });
@@ -117,4 +136,37 @@ function createInsertGenreLinkScript(genres, movieID) {
     script += ";";
 
     return { script, params };
+}
+
+function createInsertActorScript(actors) {
+    let script = "INSERT IGNORE INTO actor (id, name) VALUES ";
+    let params = [];
+
+    actors.forEach(actor => {
+        script += "(?, ?),";
+
+        params.push(actor.id);
+        params.push(actor.name);
+    });
+
+    script = script.substring(0, script.length - 1); //remove the , from the end of query
+    script += ";";
+
+    return { script, params };
+}
+
+function createInsertActorLinkScript(actors, movieID) {
+    let script = "INSERT IGNORE INTO movie_has_actor (movie_id, actor_id) VALUES ";
+    let params = [];
+
+    actors.forEach(actor => {
+        script += "(?, ?),";
+        params.push(movieID);
+        params.push(actor.id);
+    });
+
+    script = script.substring(0, script.length - 1); //remove the , from the end of query
+    script += ";";
+
+    return { linkScript: script, linkParams: params };
 }
