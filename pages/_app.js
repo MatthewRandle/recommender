@@ -12,10 +12,12 @@ import rootReducer from "../utils/rootReducer";
 
 import "../stylesheets/css/Auth.css";
 import "../stylesheets/css/Footer.css";
+import "../stylesheets/css/List.css";
 import "../stylesheets/css/Navbar.css";
 import "../stylesheets/css/Notifications.css";
 import "react-toastify/dist/ReactToastify.css";
 import "../stylesheets/css/Reset.css";
+import "../stylesheets/css/Timeline.css";
 
 const makeStore = (initialState) => {
     return createStore(rootReducer, initialState, applyMiddleware(reduxThunk));
