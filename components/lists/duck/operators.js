@@ -22,3 +22,19 @@ export const addTvShowToList = (details, rating) => async dispatch => {
         ));
     }
 };
+
+export const addMovieToList = (details, rating) => async dispatch => {
+    try {
+        await axios.post("/lists/add-movie", { details, rating });
+        return Router.push("/my-movies");
+    }
+    catch (err) {
+        dispatch(errorHandler(
+            err,
+            putError,
+            "There was a problem adding the specified movie. Please try again later.",
+            "ERR_MOVIE_ADD_ERROR",
+            false
+        ));
+    }
+};

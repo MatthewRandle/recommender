@@ -87,6 +87,9 @@ module.exports = (app) => {
                                                 });
                                             }
                                         });
+
+                                        connection.release();
+                                        return res.end();
                                     });
                                 });
                             }
@@ -99,6 +102,9 @@ module.exports = (app) => {
                                         });
                                     }
                                 });
+
+                                connection.release();
+                                return res.end();
                             }
                         });
                     });
