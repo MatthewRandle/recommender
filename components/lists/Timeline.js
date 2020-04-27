@@ -12,8 +12,8 @@ const Timeline = ({ list, steps }) => {
     const bottomRef = useRef(null);
 
     useEffect(() => {
-        setOffset(topRef.current.getBoundingClientRect().top);
-        setBottomYPos(bottomRef.current.getBoundingClientRect().top);
+        setOffset(topRef.current.getBoundingClientRect().top + document.documentElement.scrollTop);
+        setBottomYPos(bottomRef.current.getBoundingClientRect().top + document.documentElement.scrollTop);
     }, [scale]);
 
     useEffect(() => {
