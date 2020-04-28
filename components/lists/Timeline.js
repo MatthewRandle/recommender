@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 
 import Item from "./Item";
 
-const Timeline = ({ list, steps }) => {
+const Timeline = ({ list, steps, updateMedia }) => {
     const [offset, setOffset] = useState(null);
     const [bottomYPos, setBottomYPos] = useState(null);
     const [length, setLength] = useState(0);
@@ -38,7 +38,7 @@ const Timeline = ({ list, steps }) => {
                 {length ?
                     list.map((group, i) => {
                         if (group.mediaList.length > 1) {
-                            return group.mediaList.map((show, k) => {
+                            return group.mediaList.map((media, k) => {
                                 return (
                                     <Item 
                                         lastItem={!(k < group.mediaList.length - 2)} 
@@ -46,23 +46,25 @@ const Timeline = ({ list, steps }) => {
                                         stacked 
                                         position={i + k} 
                                         key={k} 
-                                        show={show} 
+                                        media={media} 
                                         length={length} 
                                         offset={offset} 
+                                        updateMedia={updateMedia}
                                     />
                                 );
                             })
                         }
                         else {
-                            const show = group.mediaList[0];
+                            const media = group.mediaList[0];
 
                             return (
                                 <Item 
                                     position={i} 
                                     key={i} 
-                                    show={show} 
+                                    media={media} 
                                     length={length} 
                                     offset={offset} 
+                                    updateMedia={updateMedia}
                                 />
                             );
                         }

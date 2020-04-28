@@ -26,12 +26,12 @@ module.exports = (app) => {
         
         const details = req.body.details;
         
-        if (details.title == null || details.title == "") return res.status(400).send({ code: "ERR_ADD_MOVIE_NO_NAME" });
+        if (details.name == null || details.name == "") return res.status(400).send({ code: "ERR_ADD_MOVIE_NO_NAME" });
 
         pool.query(checkDuplicate, [req.user.id, details.id], async (err, results) => {
             if (err) return res.status(500).send({ code: "ERR_ADD_MOVIE_CHECK_DUPLICATE" });
 
-            if (results.length > 0) return res.status(400).send({ message: `You already have ${details.title} on your list.`, code: "ERR_ADD_MOVIE_DUPLICATE" });
+            if (results.length > 0) return res.status(400).send({ message: `You already have ${details.name} on your list.`, code: "ERR_ADD_MOVIE_DUPLICATE" });
 
             pool.getConnection((err, connection) => {
                 if (err) return res.status(500).send({ code: "ERR_ADD_MOVIE_ADD_CONNECTION" });
@@ -42,7 +42,7 @@ module.exports = (app) => {
                         return res.status(500).send({ code: "ERR_ADD_MOVIE_ADD_TRANS" });
                     }
 
-                    connection.query(insertMovie, [details.id, details.title], async (err) => {
+                    connection.query(insertMovie, [details.id, details.name], async (err) => {
                         if (err) {
                             return connection.rollback(function () {
                                 connection.release();

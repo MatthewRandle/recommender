@@ -1,10 +1,11 @@
 const pool = require("../../services/db");
 
 const getTVShowList = `
-    SELECT rating, tv_show.name, tv_show.id as "showID"
+    SELECT rating, tv_show.name, tv_show.id
     FROM tv_show_list
         JOIN tv_show ON tv_show.id = tv_show_list.tv_show_id
-    WHERE user_id = ?;
+    WHERE user_id = ?
+    ORDER BY RATING DESC;
 `;
 
 module.exports = (app) => {

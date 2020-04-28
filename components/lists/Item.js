@@ -2,14 +2,12 @@ import React, { useState, useRef, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import Draggable from "react-draggable";
 
-import { updateTVShowRating } from "./duck";
-
 /* 
     position: if even it is on the right, odd left
 */
-const Item = ({ show, length, offset, position, stacked, startingIndex, lastItem }) => {
+const Item = ({ media, length, offset, position, stacked, startingIndex, lastItem, updateMedia }) => {
     const dispatch = useDispatch();
-    const initialRating = parseFloat(show.rating).toFixed(2);
+    const initialRating = parseFloat(media.rating).toFixed(2);
     const [newRating, setNewRating] = useState(null);
     const ref = useRef(null);
     const width = stacked ? `${48 - (parseInt(position) * 2)}%` : "48%";    
@@ -24,7 +22,7 @@ const Item = ({ show, length, offset, position, stacked, startingIndex, lastItem
     }
 
     const save = () => {
-        dispatch(updateTVShowRating(show.showID, newRating));
+        dispatch(updateMedia(media.id, newRating));
     }
 
     return(
@@ -44,8 +42,8 @@ const Item = ({ show, length, offset, position, stacked, startingIndex, lastItem
         >
             <div
                 onClick={() => {
+                    setZIndex(0);
                     if(initialRating == newRating || newRating == null) {
-                        setZIndex(0);
                         setClassName(defaultClassName);
                     }
                 }}
@@ -62,7 +60,7 @@ const Item = ({ show, length, offset, position, stacked, startingIndex, lastItem
                 : null}
 
                 <div>
-                    {show.name}
+                    {media.name || media.title}
                 </div>
 
                 {newRating && newRating !== initialRating ? <p onClick={() => save()}>Rating has changed!</p> : null}

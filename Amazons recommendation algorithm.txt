@@ -16,7 +16,6 @@ relevant to Harry Potter 1, from most to least***
 Trying to find out how to recommend Interstellar to users, based off of Harry Potter 1:
 
 	User has 150 items on their list, one of which is Harry Potter 1
-	200 people have Harry Potter 1 on their list (X)
 	400 people have Interstellar on their list
 	30 people have BOTH HP and Interstellar on their list = Nxy
 
@@ -37,11 +36,11 @@ Score for Harry Potter 2 based off of Harry Potter 1
 	230 people have HP2
 	
 	Exy 	= 1 - (0.99671428571)^149
-		= 0.61239517671
+		= 0.38760482329
 
 	Nxy = 180
 
-	Score = 229.232689836
+	Score = 288.49
 
 
 Score for Twilight against Harry Potter 1
@@ -49,9 +48,9 @@ Score for Twilight against Harry Potter 1
 	2 people have both
 	120 have Twilight
 
-	Exy 	= 1 - (0.99828571429)^119
+	Exy 	= 1 - (0.99828571429)^149
 		= 0.1846803685
 
 	Nxy = 2
 
-	Score = 4.22418313262
+	Score = 3.7359 = Low since there are only 2 people that have both

@@ -6,7 +6,7 @@ import Timeline from "../components/lists/Timeline";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import initialSetupFetch from "../utils/initialSetupFetch";
-import { getMovieList } from "../components/lists/duck";
+import { getMovieList, updateMovieRating } from "../components/lists/duck";
 
 const MyMovies = () => {
     const movieList = useSelector(state => state.lists ? state.lists.movieList : []);
@@ -35,7 +35,7 @@ const MyMovies = () => {
             <div className="list_container pushFooter">
                 <div className="list">
                     {movieList && movieList.length > 0 ?
-                        <Timeline list={movieList} steps={steps} />
+                        <Timeline updateMedia={updateMovieRating} list={movieList} steps={steps} />
                     : 
                         <p>No items on list</p>}
                 </div>

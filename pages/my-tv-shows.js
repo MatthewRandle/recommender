@@ -6,7 +6,7 @@ import Timeline from "../components/lists/Timeline";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import initialSetupFetch from "../utils/initialSetupFetch";
-import { getTVShowList } from "../components/lists/duck";
+import { getTVShowList, updateTVShowRating } from "../components/lists/duck";
 
 const MyTvShows = () => {
     const tvShowList = useSelector(state => state.lists ? state.lists.tvShowList : []);
@@ -34,7 +34,7 @@ const MyTvShows = () => {
 
             <div className="list_container pushFooter">
                 <div className="list">
-                    <Timeline list={tvShowList} steps={steps} />
+                    <Timeline updateMedia={updateTVShowRating} list={tvShowList} steps={steps} />
                 </div>
             </div>
 

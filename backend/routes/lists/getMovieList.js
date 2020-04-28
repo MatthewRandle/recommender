@@ -1,10 +1,11 @@
 const pool = require("../../services/db");
 
 const getMovieList = `
-    SELECT rating, movie.name, movie.id as "movieID"
+    SELECT rating, movie.name, movie.id
     FROM movie_list
         JOIN movie ON movie.id = movie_list.movie_id
-    WHERE user_id = ?;
+    WHERE user_id = ?
+    ORDER BY RATING DESC;
 `;
 
 module.exports = (app) => {

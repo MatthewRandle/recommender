@@ -13,7 +13,7 @@ export const addTvShowToList = (details, rating) => async dispatch => {
     try {
         const trimmedDetails = {
             id: details.id,
-            name: details.title,
+            name: details.name,
             credits: {
                 cast: details.credits.cast
             }
@@ -37,7 +37,7 @@ export const addMovieToList = (details, rating) => async dispatch => {
     try {
         const trimmedDetails = {
             id: details.id,
-            title: details.title,
+            name: details.title,
             genres: details.genres,
             credits: {
                 cast: details.credits.cast
@@ -72,8 +72,7 @@ export const getTVShowList = (req) => async dispatch => {
                     groupExists = true;
                 }
             })
-
-            //console.log(show)
+            
             if (!groupExists) tvShows.push({ rating: show.rating, mediaList: [show] })
         });
 
@@ -100,6 +99,21 @@ export const updateTVShowRating = (showID, rating) => async dispatch => {
             putError,
             "There was a problem updating the rating. Please try again later.",
             "ERR_TV_SHOW_UPDATE_ERROR",
+            false
+        ));
+    }
+};
+
+export const updateMovieRating = (movieID, rating) => async dispatch => {
+    try {
+        await axios.post("/lists/update-movie-rating", { movieID, rating });
+    }
+    catch (err) {
+        dispatch(errorHandler(
+            err,
+            putError,
+            "There was a problem updating the rating. Please try again later.",
+            "ERR_MOVIE_UPDATE_ERROR",
             false
         ));
     }
