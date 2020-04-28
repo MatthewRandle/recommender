@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import * as yup from "yup";
 import { useDispatch } from "react-redux";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import Head from "next/head";
 
 import { sendResetPasswordEmail } from "../../components/auth/duck";
 import Navbar from "../../components/Navbar";
-import Head from "../../components/Head";
 
 const ResetPassword = () => {
     const dispatch = useDispatch();
@@ -14,10 +14,9 @@ const ResetPassword = () => {
 
     return(
         <div>
-            <Head
-                title="Reset Password - Commenze"
-                url="https://commenze.com/auth/reset-password"
-            />
+            <Head>
+                <title>Reset Password - Commenze</title>
+            </Head>
 
             <Navbar />
 
