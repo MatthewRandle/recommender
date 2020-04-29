@@ -74,11 +74,11 @@ const Item = ({ media, length, offset, position, stacked, startingIndex, lastIte
                 
                 <div className="timeline_item_content">
                     <h2>{media.name}</h2>
+                    {newRating && newRating !== initialRating ? <button onClick={() => save()}>UPDATE</button> : null}
                 </div>
 
                 <h3>{newRating}</h3>
 
-                {/* {newRating && newRating !== initialRating ? <p onClick={() => save()}>Rating has changed!</p> : null} */}
             </div>
         </Draggable>
     );

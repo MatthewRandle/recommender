@@ -73,6 +73,21 @@
   padding: 20px;
 }
 
+.timeline_item_content button {
+  background-color: #e1d1ff;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-family: "Roboto Slab", sans-serif;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.timeline_item_content button:focus {
+  outline: none;
+}
+
 .timeline_item_content h2 {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
