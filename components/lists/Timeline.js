@@ -50,6 +50,7 @@ const Timeline = ({ list, steps, updateMedia }) => {
                                         length={length} 
                                         offset={offset} 
                                         updateMedia={updateMedia}
+                                        iteration={k}
                                     />
                                 );
                             })

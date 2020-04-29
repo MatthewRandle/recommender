@@ -1,6 +1,9 @@
+@import "_variables";
+
 .list_container {
     display: flex;
     justify-content: center;
+    background-color: $background;
 }
 
 .list {

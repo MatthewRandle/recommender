@@ -29,6 +29,7 @@ const MyTvShows = () => {
         <div>
             <Head>
                 <title>Search for new Movies & TV shows</title>
+                <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@700&display=swap" rel="stylesheet"></link>
             </Head>
 
             <Navbar />

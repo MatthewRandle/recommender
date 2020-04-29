@@ -1,3 +1,4 @@
+/* Text on white color */
 .timeline {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -14,32 +15,105 @@
   position: relative;
 }
 
-/* .timeline span {
-    position: absolute;
-} */
-.timeline_item_right,
-.timeline_item_left {
+.timeline_item {
   background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  position: relative;
+  height: 100px;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.timeline_item_marker {
+  background-color: #2c2c2c;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  top: -1px;
+}
+
+.timeline_item_left .timeline_item_marker {
+  -webkit-clip-path: polygon(50% 0, 0 0, 0 50%);
+          clip-path: polygon(50% 0, 0 0, 0 50%);
+  right: 0;
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+}
+
+.timeline_item_right .timeline_item_marker {
+  -webkit-clip-path: polygon(100% 0, 50% 0, 100% 50%);
+          clip-path: polygon(100% 0, 50% 0, 100% 50%);
+  left: 0;
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
 }
 
 .timeline_item_left {
-  border: 1px solid red;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+  border-right: 1px solid #2c2c2c;
+}
+
+.timeline_item img {
+  height: 100%;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.timeline_item_content {
+  padding: 20px;
+}
+
+.timeline_item_content h2 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 1.2rem;
+}
+
+.timeline_item h3 {
+  padding: 30px;
+  font-family: "Source Code Pro", sans-serif;
+  font-size: 1.5rem;
+}
+
+.timeline_item_right h3 {
+  margin-left: auto;
+}
+
+.timeline_item_left h3 {
+  margin-right: auto;
+}
+
+.timeline_item_left {
   right: 50%;
   margin-right: 20px;
+  border-radius: 10px 0 0 10px;
 }
 
 .timeline_item_right {
-  border: 1px solid green;
   left: 50%;
   margin-left: 20px;
+  border-radius: 0 10px 10px 0;
+  border-left: 1px solid #2c2c2c;
 }
 
 .timeline_item_stacked--odd {
-  background-color: red;
+  background-color: #bbbbbb;
+  border: none;
 }
 
 .timeline_item_stacked--even {
-  background-color: blue;
+  background-color: #dbdbdb;
+  border: none;
 }
 
 /* TIMELINE RANGE SLIDER */

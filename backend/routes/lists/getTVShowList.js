@@ -1,7 +1,7 @@
 const pool = require("../../services/db");
 
 const getTVShowList = `
-    SELECT rating, tv_show.name, tv_show.id.backdrop_path
+    SELECT rating, tv_show.name, tv_show.id, tv_show.backdrop_path
     FROM tv_show_list
         JOIN tv_show ON tv_show.id = tv_show_list.tv_show_id
     WHERE user_id = ?

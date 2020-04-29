@@ -5,12 +5,22 @@ import Draggable from "react-draggable";
 /* 
     position: if even it is on the right, odd left
 */
-const Item = ({ media, length, offset, position, stacked, startingIndex, lastItem, updateMedia }) => {
+const Item = ({ media, length, offset, position, stacked, startingIndex, lastItem, updateMedia, iteration }) => {
     const dispatch = useDispatch();
     const initialRating = parseFloat(media.rating).toFixed(2);
-    const [newRating, setNewRating] = useState(null);
+    const [newRating, setNewRating] = useState(initialRating);
     const ref = useRef(null);
-    const width = stacked ? `${48 - (parseInt(position) * 2)}%` : "48%";    
+    
+    let width;
+    //if we are stacked, the first 2 will still be the normal width
+    //after that, each 2 pairs will be the same width
+    if(stacked) {
+        if(iteration == 0 || iteration == 1) width = "48%";
+        else if (iteration == 2 || iteration == 3) width = "46%";
+        else if (iteration == 4 || iteration == 5) width = "44%";
+        else if (iteration == 6 || iteration == 7) width = "42%";
+    }
+    else width = "48%";
 
     const defaultClassName = getClassName(stacked, startingIndex, lastItem, position);
     const [className, setClassName] = useState(defaultClassName);
@@ -33,10 +43,10 @@ const Item = ({ media, length, offset, position, stacked, startingIndex, lastIte
                 setZIndex(1);
 
                 if(position % 2 === 0) {
-                    setClassName("timeline_item_right");
+                    setClassName("timeline_item timeline_item_right");
                 }
                 else {
-                    setClassName("timeline_item_left");
+                    setClassName("timeline_item timeline_item_left");
                 }
             }}
         >
@@ -55,15 +65,20 @@ const Item = ({ media, length, offset, position, stacked, startingIndex, lastIte
                 }}
                 ref={ref} 
             >
-                {newRating && newRating !== initialRating ? 
+                {/* {newRating && newRating !== initialRating ? 
                     <p>{newRating}</p>
-                : null}
+                : null} */}
 
-                <div>
-                    {media.name || media.title}
+                <div className="timeline_item_marker" />
+                <img draggable="false" src={`http://image.tmdb.org/t/p/w342${media.backdrop_path}`} alt="Poster" />
+                
+                <div className="timeline_item_content">
+                    <h2>{media.name}</h2>
                 </div>
 
-                {newRating && newRating !== initialRating ? <p onClick={() => save()}>Rating has changed!</p> : null}
+                <h3>{newRating}</h3>
+
+                {/* {newRating && newRating !== initialRating ? <p onClick={() => save()}>Rating has changed!</p> : null} */}
             </div>
         </Draggable>
     );
@@ -76,19 +91,19 @@ function getClassName(stacked, startingIndex, lastItem, position) {
     if (stacked && !lastItem) {
         //item is on the right
         if (position % 2 === 0) {
-            if (position % 4 === 0) className = "timeline_item_right timeline_item_stacked--even";
-            else className = "timeline_item_right timeline_item_stacked--odd";
+            if (position % 4 === 0) className = "timeline_item timeline_item_right timeline_item_stacked--even";
+            else className = "timeline_item timeline_item_right timeline_item_stacked--odd";
         }
         //item is on the left
         else {
             //if we start at 0, make it 1 so our modulus checks works for only odd numbers, since anything % 0 is 0
             let startIndex = startingIndex == 0 ? startingIndex + 1 : startingIndex;
 
-            if (position % (startIndex + 2) !== 0) className = "timeline_item_left timeline_item_stacked--even";
-            else className = "timeline_item_left timeline_item_stacked--odd";
+            if (position % (startIndex + 2) !== 0) className = "timeline_item timeline_item_left timeline_item_stacked--even";
+            else className = "timeline_item timeline_item_left timeline_item_stacked--odd";
         }
     }
-    else position % 2 === 0 ? className = "timeline_item_right" : className = "timeline_item_left";
+    else position % 2 === 0 ? className = "timeline_item timeline_item_right" : className = "timeline_item timeline_item_left";
 
     return className;
 }
