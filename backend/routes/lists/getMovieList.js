@@ -1,7 +1,7 @@
 const pool = require("../../services/db");
 
 const getMovieList = `
-    SELECT rating, movie.name, movie.id
+    SELECT rating, movie.name, movie.id, movie.backdrop_path
     FROM movie_list
         JOIN movie ON movie.id = movie_list.movie_id
     WHERE user_id = ?

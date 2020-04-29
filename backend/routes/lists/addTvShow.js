@@ -10,8 +10,8 @@ const checkDuplicate = `
 
 const insertShow = `
     INSERT INTO tv_show
-    (id, name)
-    VALUES(?, ?);
+    (id, name, backdrop_path)
+    VALUES(?, ?, ?);
 `;
 
 const insertToShowList = `
@@ -42,7 +42,7 @@ module.exports = (app) => {
                         return res.status(500).send({ code: "ERR_ADD_TV_SHOW_ADD_TRANS" });
                     }
 
-                    connection.query(insertShow, [details.id, details.name], async (err) => {
+                    connection.query(insertShow, [details.id, details.name, details.backdrop_path], async (err) => {
                         if (err) {
                             return connection.rollback(function () {
                                 connection.release();

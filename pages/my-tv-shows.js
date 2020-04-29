@@ -6,6 +6,7 @@ import Timeline from "../components/lists/Timeline";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import initialSetupFetch from "../utils/initialSetupFetch";
+import forceAuth from "../utils/forceAuth";
 import { getTVShowList, updateTVShowRating } from "../components/lists/duck";
 
 const MyTvShows = () => {
@@ -43,9 +44,13 @@ const MyTvShows = () => {
     );
 };
 
-MyTvShows.getInitialProps = async function ({ store, req }) {
+MyTvShows.getInitialProps = async function ({ store, req, res }) {
     await initialSetupFetch(store, req);
-    await store.dispatch(getTVShowList(req));
+    
+    if (forceAuth(store, res, true, false) === true) {
+        await store.dispatch(getTVShowList(req));
+    }
+    
     return { ignore: true };
 };
 

@@ -6,6 +6,7 @@ import Timeline from "../components/lists/Timeline";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import initialSetupFetch from "../utils/initialSetupFetch";
+import forceAuth from "../utils/forceAuth";
 import { getMovieList, updateMovieRating } from "../components/lists/duck";
 
 const MyMovies = () => {
@@ -46,9 +47,13 @@ const MyMovies = () => {
     );
 };
 
-MyMovies.getInitialProps = async function ({ store, req }) {
+MyMovies.getInitialProps = async function ({ store, req, res }) {
     await initialSetupFetch(store, req);
-    await store.dispatch(getMovieList(req));
+
+    if(forceAuth(store, res, true, false, "/my-movies") === true) {
+        await store.dispatch(getMovieList(req));
+    }
+    
     return { ignore: true };
 };
 
