@@ -29,7 +29,7 @@ const getUsersMoviesWithExy = `
     movie_id (x2) = movie ID that we are searching for similar movies
  */
 const getAmountOfMoviesThatShareListWithSpecifiedMovie = `
-    SELECT compare.movie_id, count(compare.movie_id) as "amount", movie.name
+    SELECT compare.movie_id, count(compare.movie_id) as "amount", movie.name, movie.poster_path
     FROM movie_list
         JOIN movie_list compare ON compare.user_id = movie_list.user_id
         JOIN movie ON movie.id = compare.movie_id
@@ -46,6 +46,8 @@ module.exports = (app) => {
         pool.query(getUsersMoviesWithExy, [user.id], async (err, results) => {
             if (err) return res.status(500).send({ code: "ERR_MOVIE_RECOMMENDATIONS_USERS_MOVIES" });
 
+            if (results.length === 0) return res.send({ usersMovies: [] });
+
             let usersMovies = await getRecommendations(results, user.id);
 
             return res.send({ usersMovies });
@@ -59,7 +61,7 @@ async function getRecommendations(movies, userID) {
     await Promise.all(usersMovies.map(async movie => {
         await new Promise(resolve => {
             pool.query(getAmountOfMoviesThatShareListWithSpecifiedMovie, [userID, movie.movie_id, movie.movie_id], (err, results) => {
-                if (err) return res.status(500).send({ code: "ERR_MOVIE_RECOMMENDATIONS_GET_BOTH" });
+                if (err) return resolve();
 
                 if (results.length > 0) {
                     movie.recommendations = results;

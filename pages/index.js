@@ -1,14 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import Head from "next/head";
 
 import Footer from "../components/Footer";
 import initialSetupFetch from "../utils/initialSetupFetch";
 import Navbar from "../components/Navbar";
-import { getMovieRecommendations } from "../components/recommendations/duck";
+import Item from "../components/recommendations/Item";
+import { getMovieRecommendations, getTvShowRecommendations, getTrendingMovies, getTrendingTvShows } from "../components/recommendations/duck";
 
 const Index = () => {
+    const user = useSelector(state => state.app ? state.app.user : null);
+
+    const tvShowRecommendations = useSelector(state => state.recommendations ? state.recommendations.tvShowRecommendations : []);
+    const movieRecommendations = useSelector(state => state.recommendations ? state.recommendations.movieRecommendations : []);
+    const trendingMovies = useSelector(state => state.recommendations ? state.recommendations.trendingMovies : []);
+    const trendingTvShows = useSelector(state => state.recommendations ? state.recommendations.trendingTvShows : []);
+
+    const [amountOfTrendingMovies, setAmountOfTrendingMovies] = useState(6);
+    const [amountOfTrendingTvShows, setAmountOfTrendingTvShows] = useState(6);
+    const [amountOfRecommendedMovies, setAmountOfRecommendedMovies] = useState(6);
+    const [amountOfRecommendedTvShows, setAmountOfRecommendedTvShows] = useState(6);
+console.log(movieRecommendations)
     return(
-        <div style={{ height: "100vh", display: "flex", flexDirection: "column" }}>
+        <div style={{ height: "100vh", display: "flex", flexDirection: "column", alignItems: "center" }}>
             <Head>
                 <title>Find new TV shows and Movies</title>
             </Head>
@@ -16,7 +30,74 @@ const Index = () => {
             <Navbar notFixed />
 
             <div className="home pushFooter">
-                 
+                {user ?
+                    <div>
+                        <h2>Recommended Movies Based On Your Movie List</h2>
+                        <section>
+                            {movieRecommendations && movieRecommendations.length > 0 ?
+                                movieRecommendations.map((movie, i) => {
+                                    if (i >= amountOfRecommendedMovies) return;
+                                    return (
+                                        <Item
+                                            key={i}
+                                            id={movie.id}
+                                            name={movie.name}
+                                            poster_path={movie.poster_path}
+                                            vote_average={movie.rating}
+                                            type="movie"
+                                        />
+                                    );
+                                })
+                                : null}
+
+                            {amountOfRecommendedMovies < 18 && amountOfRecommendedMovies < movieRecommendations.length ? 
+                                <button onClick={() => setAmountOfRecommendedMovies(amountOfRecommendedMovies + 5)}>Load More</button> 
+                            : null}
+                        </section>
+                    </div>
+                : null}
+
+                <h2>Trending Movies</h2>
+                <section>
+                    {trendingMovies && trendingMovies.length > 0 ?
+                        trendingMovies.map((movie, i) => {
+                            if (i >= amountOfTrendingMovies) return;
+                            return(
+                                <Item
+                                    key={i}
+                                    id={movie.id}
+                                    name={movie.title}
+                                    poster_path={movie.poster_path}
+                                    vote_average={movie.vote_average}
+                                    type="movie"
+                                />
+                            );
+                        })
+                    : null}
+
+                    {amountOfTrendingMovies < 18 ? <button onClick={() => setAmountOfTrendingMovies(amountOfTrendingMovies + 5)}>Load More</button> : null}
+                </section>
+
+                <h2>Trending TV Shows</h2>
+                <section>
+                    {trendingTvShows && trendingTvShows.length > 0 ?
+                        trendingTvShows.map((show, i) => {
+                            if (i >= amountOfTrendingTvShows) return;
+                            return (
+                                <Item
+                                    key={i}
+                                    id={show.id}
+                                    name={show.title}
+                                    poster_path={show.poster_path}
+                                    vote_average={show.vote_average}
+                                    type="tv"
+                                />
+                            );
+                        })
+                        : null}
+
+                    {amountOfTrendingTvShows < 18 ? <button onClick={() => setAmountOfTrendingTvShows(amountOfTrendingTvShows + 5)}>Load More</button> : null}
+                </section>
             </div>
 
             <Footer />
@@ -27,8 +108,28 @@ const Index = () => {
 Index.getInitialProps = async function ({ query, store, req, res }) {
     await initialSetupFetch(store, req);
 
-    const state = store.getState();
-    if (state.app && state.app.user) await store.dispatch(getMovieRecommendations(req));
+    let state = store.getState();
+    if (state.app && state.app.user) {
+        //if the movieRecommends/tv haven't been fetched yet, fetch them
+        if (state.recommendations != null) {
+            if (state.recommendations.movieRecommendations == null) await store.dispatch(getMovieRecommendations(req));
+            if (state.recommendations.tvShowRecommendations == null) await store.dispatch(getTvShowRecommendations(req));
+        }
+        else {
+            await store.dispatch(getMovieRecommendations(req));
+            await store.dispatch(getTvShowRecommendations(req));
+        }    
+    }
+
+    //if the trending movies/tvShows haven't been fetched yet, fetch them
+    if (state.recommendations != null) {
+        if (state.recommendations.trendingMovies == null) await store.dispatch(getTrendingMovies());
+        if (state.recommendations.trendingTvShows == null) await store.dispatch(getTrendingTvShows());
+    }
+    else {
+        await store.dispatch(getTrendingMovies());
+        await store.dispatch(getTrendingTvShows());
+    }
 
     return { ignore: true };
 }

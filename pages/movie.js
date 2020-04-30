@@ -15,7 +15,7 @@ const Movie = ({ details }) => {
     return(
         <div style={{ height: "100vh", display: "flex", flexDirection: "column" }}>
             <Head>
-                <title>{details ? details.name : "Show not found"} - Recommender</title>
+                <title>{details ? details.title : "Movie not found"} - Recommender</title>
             </Head>
 
             <Navbar notFixed />

@@ -1,0 +1,80 @@
+/* Text on white color */
+.home {
+  width: 1150px;
+  padding-top: 50px;
+}
+
+.home h2 {
+  font-family: "Roboto Slab", sans-serif;
+  color: #2c2c2c;
+}
+
+.home section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  position: relative;
+  margin-top: 30px;
+  padding-bottom: 20px;
+}
+
+.home button {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.item {
+  width: 15%;
+  position: relative;
+  margin-bottom: 30px;
+  cursor: pointer;
+}
+
+.item_image_container {
+  width: 100%;
+}
+
+.item img {
+  width: 100%;
+  border-radius: 15px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.item h2 {
+  font-size: 1rem;
+  font-family: "Roboto Slab";
+  line-height: 1.3em;
+  margin-top: 10px;
+  margin-left: 5px;
+  color: #2c2c2c;
+}
+
+.item h3 {
+  font-size: 1rem;
+  font-family: "Roboto Slab";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  border: 2px solid #d4d4d4;
+  width: 50px;
+  height: 50px;
+  background-color: #24262e;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: white;
+}
+/*# sourceMappingURL=Index.css.map */

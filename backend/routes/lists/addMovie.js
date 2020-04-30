@@ -10,8 +10,8 @@ const checkDuplicate = `
 
 const insertMovie = `
     INSERT IGNORE INTO movie
-    (id, name, backdrop_path)
-    VALUES(?, ?, ?);
+    (id, name, backdrop_path, poster_path, vote_average)
+    VALUES(?, ?, ?, ?, ?);
 `;
 
 const insertToMovieList = `
@@ -42,7 +42,7 @@ module.exports = (app) => {
                         return res.status(500).send({ code: "ERR_ADD_MOVIE_ADD_TRANS" });
                     }
 
-                    connection.query(insertMovie, [details.id, details.name, details.backdrop_path], async (err) => {
+                    connection.query(insertMovie, [details.id, details.name, details.backdrop_path, details.poster_path, details.vote_average], async (err) => {
                         if (err) {
                             return connection.rollback(function () {
                                 connection.release();

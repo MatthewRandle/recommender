@@ -12,6 +12,7 @@ import rootReducer from "../utils/rootReducer";
 
 import "../stylesheets/css/Auth.css";
 import "../stylesheets/css/Footer.css";
+import "../stylesheets/css/Index.css";
 import "../stylesheets/css/List.css";
 import "../stylesheets/css/Navbar.css";
 import "../stylesheets/css/Notifications.css";
