@@ -11,9 +11,9 @@
 }
 
 .home section {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 20px;
     position: relative;
     margin-top: 30px;
     padding-bottom: 20px;
@@ -23,10 +23,21 @@
     position: absolute;
     bottom: 0;
     right: 0;
+    padding: 5px;
+    padding-left: 40px;
+    padding-right: 40px;
+    background-color: $purple;
+    @include border;
+    font-family: "Roboto Slab", sans-serif;
+    color: $darkGray;
+    cursor: pointer;
+
+    &:focus {
+        outline: none;
+    }
 }
 
 .item {
-    width: 15%;
     position: relative;
     margin-bottom: 30px;
     cursor: pointer;

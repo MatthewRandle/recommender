@@ -9,13 +9,13 @@ const checkDuplicate = `
 `;
 
 const insertShow = `
-    INSERT INTO tv_show
-    (id, name, backdrop_path, poster_path, vote_average)
-    VALUES(?, ?, ?, ?, ?);
+    INSERT IGNORE INTO tv_show
+    (id, name, backdrop_path, poster_path)
+    VALUES(?, ?, ?, ?);
 `;
 
 const insertToShowList = `
-    INSERT INTO tv_show_list
+    INSERT IGNORE INTO tv_show_list
     (user_id, tv_show_id, rating, added)
     VALUES(?, ?, ?, ?);
 `; 
@@ -42,7 +42,7 @@ module.exports = (app) => {
                         return res.status(500).send({ code: "ERR_ADD_TV_SHOW_ADD_TRANS" });
                     }
 
-                    connection.query(insertShow, [details.id, details.name, details.backdrop_path, details.poster_path, details.vote_average], async (err) => {
+                    connection.query(insertShow, [details.id, details.name, details.backdrop_path, details.poster_path], async (err) => {
                         if (err) {
                             return connection.rollback(function () {
                                 connection.release();
@@ -50,12 +50,29 @@ module.exports = (app) => {
                             });
                         }
 
-                        connection.query(insertToShowList, [req.user.id, details.id, req.body.rating, moment().format()], (err) => {
+                        connection.query(insertToShowList, [req.user.id, details.id, req.body.rating, moment().format()], async (err) => {
                             if (err) {
                                 return connection.rollback(function () {
                                     connection.release();
                                     return res.status(500).send({ code: "ERR_ADD_TV_SHOW_TOO_LIST" });
                                 });
+                            }
+
+                            if (details.genres && details.genres.length > 0) {
+                                await new Promise(resolve => {
+                                    const { script, params } = createInsertGenreLinkScript(details.genres, details.id);
+
+                                    connection.query(script, params, (err) => {
+                                        if (err) {
+                                            return connection.rollback(function () {
+                                                connection.release();
+                                                return res.status(500).send({ code: "ERR_ADD_TV_SHOW_GENRE_LINKS" });
+                                            });
+                                        }
+
+                                        resolve();
+                                    });
+                                })
                             }
 
                             if(details.credits && details.credits.cast && details.credits.cast.length > 0) {
@@ -86,10 +103,10 @@ module.exports = (app) => {
                                                     return res.status(500).send({ code: "ERR_ADD_TV_SHOW_ACTORS_COMMIT" });
                                                 });
                                             }
-                                        });
 
-                                        connection.release();
-                                        return res.end();
+                                            connection.release();
+                                            return res.end();
+                                        });
                                     });
                                 });
                             }
@@ -101,10 +118,10 @@ module.exports = (app) => {
                                             return res.status(500).send({ code: "ERR_ADD_TV_SHOW_COMMIT" });
                                         });
                                     }
-                                });
 
-                                connection.release();
-                                return res.end();
+                                    connection.release();
+                                    return res.end();
+                                });
                             }
                         });
                     });
@@ -113,6 +130,23 @@ module.exports = (app) => {
         });
     });
 };
+
+function createInsertGenreLinkScript(genres, showID) {
+    let script = "INSERT IGNORE INTO tv_show_has_genre (tv_show_id, genre_id) VALUES ";
+    let params = [];
+
+    genres.forEach(genre => {
+        script += "(?, (SELECT id FROM genre WHERE type = ?)),";
+        params.push(showID);
+        params.push(genre.name);
+    });
+
+    script = script.substring(0, script.length - 1); //remove the , from the end of query
+    script += ";";
+
+    return { script, params };
+}
+
 
 function createInsertActorScript(actors) {
     let script = "INSERT IGNORE INTO actor (id, name) VALUES ";

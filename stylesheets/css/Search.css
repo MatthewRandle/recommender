@@ -1,0 +1,63 @@
+/* Text on white color */
+.search {
+  width: 750px;
+  padding-top: 50px;
+  text-align: center;
+}
+
+.search h1 {
+  font-family: "Roboto Slab", sans-serif;
+  color: #2c2c2c;
+}
+
+.search input {
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 1rem;
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  outline-color: #e1d1ff;
+  margin-bottom: 25px;
+}
+
+.search_result {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  text-align: start;
+  margin-bottom: 25px;
+  border-bottom: 1px solid #cccccc;
+  cursor: pointer;
+}
+
+.search_result:hover {
+  background-color: #fafafa;
+}
+
+.search_result_image_container {
+  width: 100px;
+}
+
+.search_result_image_container img {
+  width: 100%;
+}
+
+.search_result_text {
+  padding: 30px;
+  width: 650px;
+}
+
+.search_result_text h2 {
+  font-family: "Roboto Slab", sans-serif;
+}
+
+.search_result_text p {
+  margin-top: 10px;
+  font-family: "Roboto ", sans-serif;
+  line-height: 1.3em;
+}
+/*# sourceMappingURL=Search.css.map */

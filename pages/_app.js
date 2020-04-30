@@ -18,6 +18,7 @@ import "../stylesheets/css/Navbar.css";
 import "../stylesheets/css/Notifications.css";
 import "react-toastify/dist/ReactToastify.css";
 import "../stylesheets/css/Reset.css";
+import "../stylesheets/css/Search.css";
 import "../stylesheets/css/Timeline.css";
 
 const makeStore = (initialState) => {

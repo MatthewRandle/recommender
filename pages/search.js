@@ -24,30 +24,34 @@ const Search = () => {
     }
 
     return(
-        <div style={{ height: "100vh", display: "flex", flexDirection: "column" }}>
+        <div style={{ height: "100vh", display: "flex", flexDirection: "column", alignItems: "center" }}>
             <Head>
                 <title>Search for new Movies & TV shows</title>
             </Head>
 
             <Navbar />
 
-            <div className="search_container pushFooter">
-                <div className="search">
-                    <div className="search_form">
-                        <label htmlFor="search"><h1>Search for a Movie or TV Show</h1></label>
-                        <input autoComplete="off" onChange={handleChange} type="text" name="search" />
-                        {searchResults && searchResults.length > 0 ?
-                            searchResults.map((result, i) => (
-                                <Result 
+            <div className="search pushFooter">
+                <div className="search_form">
+                    <label htmlFor="search"><h1>Search for a Movie or TV Show</h1></label>
+                    <input autoComplete="off" onChange={handleChange} type="text" name="search" />
+
+                    {searchResults && searchResults.length > 0 ?
+                        searchResults.map((result, i) => {
+                            if (result.media_type !== "movie" && result.media_type !== "tv") return;
+
+                            return(
+                                <Result
                                     key={i}
                                     id={result.id}
-                                    title={result.original_name || result.original_title} 
+                                    title={result.original_name || result.original_title}
                                     posterPath={result.poster_path}
                                     type={result.media_type}
+                                    overview={result.overview.substring(0, 200)}
                                 />
-                            ))
-                        : null}
-                    </div>
+                            );
+                        })
+                    : null}
                 </div>
             </div>
 

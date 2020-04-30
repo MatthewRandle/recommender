@@ -10,8 +10,8 @@ const checkDuplicate = `
 
 const insertMovie = `
     INSERT IGNORE INTO movie
-    (id, name, backdrop_path, poster_path, vote_average)
-    VALUES(?, ?, ?, ?, ?);
+    (id, name, backdrop_path, poster_path)
+    VALUES(?, ?, ?, ?);
 `;
 
 const insertToMovieList = `
@@ -42,7 +42,7 @@ module.exports = (app) => {
                         return res.status(500).send({ code: "ERR_ADD_MOVIE_ADD_TRANS" });
                     }
 
-                    connection.query(insertMovie, [details.id, details.name, details.backdrop_path, details.poster_path, details.vote_average], async (err) => {
+                    connection.query(insertMovie, [details.id, details.name, details.backdrop_path, details.poster_path], async (err) => {
                         if (err) {
                             return connection.rollback(function () {
                                 connection.release();
@@ -66,6 +66,7 @@ module.exports = (app) => {
                                         if (err) {
                                             return connection.rollback(function () {
                                                 connection.release();
+                                                resolve();
                                                 return res.status(500).send({ code: "ERR_ADD_MOVIE_GENRE_LINKS" });
                                             });
                                         }
@@ -110,10 +111,10 @@ module.exports = (app) => {
                                         return res.status(500).send({ code: "ERR_ADD_MOVIE_COMMIT" });
                                     });
                                 }
-                            });
 
-                            connection.release();
-                            return res.end();
+                                connection.release();
+                                return res.end();
+                            });
                         });
                     });
                 });

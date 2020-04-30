@@ -20,7 +20,7 @@ const Index = () => {
     const [amountOfTrendingTvShows, setAmountOfTrendingTvShows] = useState(6);
     const [amountOfRecommendedMovies, setAmountOfRecommendedMovies] = useState(6);
     const [amountOfRecommendedTvShows, setAmountOfRecommendedTvShows] = useState(6);
-console.log(movieRecommendations)
+
     return(
         <div style={{ height: "100vh", display: "flex", flexDirection: "column", alignItems: "center" }}>
             <Head>
@@ -30,28 +30,51 @@ console.log(movieRecommendations)
             <Navbar notFixed />
 
             <div className="home pushFooter">
-                {user ?
+                {user && movieRecommendations && movieRecommendations.length > 0 ?
                     <div>
                         <h2>Recommended Movies Based On Your Movie List</h2>
                         <section>
-                            {movieRecommendations && movieRecommendations.length > 0 ?
-                                movieRecommendations.map((movie, i) => {
-                                    if (i >= amountOfRecommendedMovies) return;
-                                    return (
-                                        <Item
-                                            key={i}
-                                            id={movie.id}
-                                            name={movie.name}
-                                            poster_path={movie.poster_path}
-                                            vote_average={movie.rating}
-                                            type="movie"
-                                        />
-                                    );
-                                })
-                                : null}
+                            {movieRecommendations.map((movie, i) => {
+                                if (i >= amountOfRecommendedMovies) return;
+                                return (
+                                    <Item
+                                        key={i}
+                                        id={movie.movieID}
+                                        name={movie.name}
+                                        poster_path={movie.poster_path}
+                                        vote_average={movie.rating}
+                                        type="movie"
+                                    />
+                                );
+                            })}
 
                             {amountOfRecommendedMovies < 18 && amountOfRecommendedMovies < movieRecommendations.length ? 
-                                <button onClick={() => setAmountOfRecommendedMovies(amountOfRecommendedMovies + 5)}>Load More</button> 
+                                <button onClick={() => setAmountOfRecommendedMovies(amountOfRecommendedMovies + 6)}>Load More</button> 
+                            : null}
+                        </section>
+                    </div>
+                : null}
+
+                {user && tvShowRecommendations && tvShowRecommendations.length > 0 ?
+                    <div>
+                        <h2>Recommended Movies Based On Your TV Show List</h2>
+                        <section>
+                            {tvShowRecommendations.map((show, i) => {
+                                if (i >= amountOfRecommendedMovies) return;
+                                return (
+                                    <Item
+                                        key={i}
+                                        id={show.showID}
+                                        name={show.name}
+                                        poster_path={show.poster_path}
+                                        vote_average={show.rating}
+                                        type="tv"
+                                    />
+                                );
+                            })}
+
+                            {amountOfRecommendedTvShows < 18 && amountOfRecommendedTvShows < tvShowRecommendations.length ?
+                                <button onClick={() => setAmountOfRecommendedTvShows(amountOfRecommendedTvShows + 6)}>Load More</button>
                             : null}
                         </section>
                     </div>
@@ -75,7 +98,7 @@ console.log(movieRecommendations)
                         })
                     : null}
 
-                    {amountOfTrendingMovies < 18 ? <button onClick={() => setAmountOfTrendingMovies(amountOfTrendingMovies + 5)}>Load More</button> : null}
+                    {amountOfTrendingMovies < 18 ? <button onClick={() => setAmountOfTrendingMovies(amountOfTrendingMovies + 6)}>Load More</button> : null}
                 </section>
 
                 <h2>Trending TV Shows</h2>
@@ -96,7 +119,7 @@ console.log(movieRecommendations)
                         })
                         : null}
 
-                    {amountOfTrendingTvShows < 18 ? <button onClick={() => setAmountOfTrendingTvShows(amountOfTrendingTvShows + 5)}>Load More</button> : null}
+                    {amountOfTrendingTvShows < 18 ? <button onClick={() => setAmountOfTrendingTvShows(amountOfTrendingTvShows + 6)}>Load More</button> : null}
                 </section>
             </div>
 

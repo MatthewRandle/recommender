@@ -14,9 +14,12 @@ export const addTvShowToList = (details, rating) => async dispatch => {
         const trimmedDetails = {
             id: details.id,
             name: details.name,
+            genres: details.genres,
             credits: {
                 cast: details.credits.cast
-            }
+            },
+            backdrop_path: details.backdrop_path,
+            poster_path: details.poster_path
         }
 
         await axios.post("/lists/add-tv-show", { details: trimmedDetails, rating });
@@ -41,7 +44,9 @@ export const addMovieToList = (details, rating) => async dispatch => {
             genres: details.genres,
             credits: {
                 cast: details.credits.cast
-            }
+            },
+            backdrop_path: details.backdrop_path,
+            poster_path: details.poster_path
         }
 
         await axios.post("/lists/add-movie", { details: trimmedDetails, rating });
