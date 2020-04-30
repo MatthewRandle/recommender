@@ -14,6 +14,7 @@ import "../stylesheets/css/Auth.css";
 import "../stylesheets/css/Footer.css";
 import "../stylesheets/css/Index.css";
 import "../stylesheets/css/List.css";
+import "../stylesheets/css/Media.css";
 import "../stylesheets/css/Navbar.css";
 import "../stylesheets/css/Notifications.css";
 import "react-toastify/dist/ReactToastify.css";

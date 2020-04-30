@@ -13,7 +13,7 @@ const Movie = ({ details }) => {
     const user = useSelector(state => state.app ? state.app.user : null);
 
     return(
-        <div style={{ height: "100vh", display: "flex", flexDirection: "column" }}>
+        <div style={{ height: "100vh", display: "flex", flexDirection: "column", alignItems: "center" }}>
             <Head>
                 <title>{details ? details.title : "Movie not found"} - Recommender</title>
             </Head>

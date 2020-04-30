@@ -2,6 +2,7 @@ import React from "react";
 import Head from "next/head";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
+import moment from "moment";
 
 import Footer from "../components/Footer";
 import initialSetupFetch from "../utils/initialSetupFetch";
@@ -13,7 +14,7 @@ const TV = ({ details }) => {
     const user = useSelector(state => state.app ? state.app.user : null);
 
     return(
-        <div style={{ height: "100vh", display: "flex", flexDirection: "column" }}>
+        <div style={{ height: "100vh", display: "flex", flexDirection: "column", alignItems: "center" }}>
             <Head>
                 <title>{details ? details.name : "Show not found"} - Recommender</title>
             </Head>
@@ -24,18 +25,33 @@ const TV = ({ details }) => {
                 <div className="media pushFooter">
                     {user ? <button onClick={() => dispatch(addTvShowToList(details, "9.1"))}>Add {details.name} to my TV Show list</button> : null}
 
-                    <h1>{details.name}</h1>
-                    <p>{details.overview}</p>
-                    <img src={"http://image.tmdb.org/t/p/w185/" + details.poster_path} alt="Poster" />
-
-                    <h2>Main Cast</h2>
-                    {details.credits && details.credits.cast && details.credits.cast.length > 0 ?
-                        details.credits.cast.map((person, i) => (
-                            <div key={i}>
-                                <p>{person.name}</p>
+                    <div className="media_content">
+                        <div className="media_content_image_container"><img src={"http://image.tmdb.org/t/p/w185/" + details.poster_path} alt="Poster" /></div>
+                        <div className="media_text">
+                            <h1>{details.name}</h1>
+                            <p>{details.overview}</p>
+                            
+                            <div className="media_text_bottom">
+                                <p>First aired on {moment(details.first_air_date).format("DD MMMM, YYYY")}</p>
+                                <p>{details.number_of_episodes} episodes</p>
+                                <p>{details.number_of_seasons} seasons</p>
                             </div>
-                        ))
-                    : null}
+                        </div>
+                    </div>
+
+                    <div className="media_cast_container">
+                        <h2>Main Cast</h2>
+                        <div className="media_cast">
+                            {details.credits && details.credits.cast && details.credits.cast.length > 0 ?
+                                details.credits.cast.map((person, i) => (
+                                    <div className="media_person" key={i}>
+                                        <div className="media_person_image_container"><img src={"http://image.tmdb.org/t/p/w185/" + person.profile_path} alt="Actor Picture" /></div>
+                                        <p>{person.name} plays {person.character}</p>
+                                    </div>
+                                ))
+                            : null}
+                        </div>
+                </div>
                 </div>
             : 
                 <div>

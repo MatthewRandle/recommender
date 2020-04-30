@@ -1,0 +1,112 @@
+/* Text on white color */
+.media {
+  width: 1150px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding-top: 20px;
+}
+
+.media button {
+  padding: 10px;
+  padding-left: 40px;
+  padding-right: 40px;
+  font-family: "Roboto Slab", sans-serif;
+  font-size: 0.8rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background-color: #e1d1ff;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.media button:focus {
+  outline: none;
+}
+
+.media_content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 300px;
+}
+
+.media_content_image_container {
+  height: 100%;
+}
+
+.media_content_image_container img {
+  height: 100%;
+}
+
+.media_text {
+  padding: 30px;
+  height: 100%;
+  border-bottom: 1px solid #dddddd;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.media_text h1 {
+  font-family: "Roboto Slab", sans-serif;
+}
+
+.media_text p {
+  margin-top: 10px;
+  font-family: "Roboto", sans-serif;
+  line-height: 1.3em;
+}
+
+.media_text_bottom {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: auto;
+  font-family: "Roboto", sans-serif;
+}
+
+.media_cast_container {
+  margin-top: 30px;
+  width: 100%;
+}
+
+.media_cast_container h2 {
+  font-family: "Roboto Slab", sans-serif;
+}
+
+.media_cast {
+  margin-top: 20px;
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 30px;
+  -ms-grid-columns: (1fr)[6];
+      grid-template-columns: repeat(6, 1fr);
+}
+
+.media_person p {
+  font-family: "Roboto Slab", sans-serif;
+  color: #2c2c2c;
+  margin-top: 10px;
+}
+
+.media_person_image_container img {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  width: 100%;
+}
+/*# sourceMappingURL=Media.css.map */
