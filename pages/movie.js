@@ -2,6 +2,7 @@ import React from "react";
 import Head from "next/head";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
+import moment from "moment";
 
 import Footer from "../components/Footer";
 import initialSetupFetch from "../utils/initialSetupFetch";
@@ -22,20 +23,32 @@ const Movie = ({ details }) => {
 
             {details ?
                 <div className="media pushFooter">
-                    {user ? <button onClick={() => dispatch(addMovieToList(details, "9.1"))}>Add {details.name} to my Movie list</button> : null}
+                    <div className="media_content">
+                        <div className="media_content_image_container"><img src={"http://image.tmdb.org/t/p/w185/" + details.poster_path} alt="Poster" /></div>
+                        <div className="media_text">
+                            <h1>{details.title}</h1>
+                            <p>{details.overview}</p>
 
-                    <h1>{details.name}</h1>
-                    <p>{details.overview}</p>
-                    <img src={"http://image.tmdb.org/t/p/w185/" + details.poster_path} alt="Poster" />
-
-                    <h2>Main Cast</h2>
-                    {details.credits && details.credits.cast && details.credits.cast.length > 0 ?
-                        details.credits.cast.map((person, i) => (
-                            <div key={i}>
-                                <p>{person.name}</p>
+                            <div className="media_text_bottom">
+                                <p>Released {moment(details.release_date).format("DD MMMM, YYYY")}</p>
+                                {user ? <button onClick={() => dispatch(addMovieToList(details, "9.1"))}>Add {details.name} to my Movie list</button> : null}
                             </div>
-                        ))
-                    : null}
+                        </div>
+                    </div>
+
+                    <div className="media_cast_container">
+                        <h2>Main Cast</h2>
+                        <div className="media_cast">
+                            {details.credits && details.credits.cast && details.credits.cast.length > 0 ?
+                                details.credits.cast.map((person, i) => (
+                                    <div className="media_person" key={i}>
+                                        <div className="media_person_image_container"><img src={"http://image.tmdb.org/t/p/w185/" + person.profile_path} alt="Actor Picture" /></div>
+                                        <p>{person.name} plays {person.character}</p>
+                                    </div>
+                                ))
+                            : null}
+                        </div>
+                    </div>
                 </div>
             : 
                 <div>

@@ -6,16 +6,16 @@ const passport = require("passport");
 const xFrameOptions = require("x-frame-options");
 const helmet = require("helmet");
 const keys = require("../config/keys");
-//const RateLimit = require("express-rate-limit");
+const RateLimit = require("express-rate-limit");
 
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
 const handle = app.getRequestHandler();
 const PORT = parseInt(process.env.PORT, 10) || 4000;
 
-/* const commentLimiter = new RateLimit({
-    windowMs: 30 * 1000, //30 seconds
-    max: 10,
+const updateRatingLimit = new RateLimit({
+    windowMs: 60 * 1000, //30 seconds
+    max: 60,
     delayMs: 0
 });
 
@@ -23,7 +23,7 @@ const limiter = new RateLimit({
     windowMs: 15 * 60 * 1000,
     max: 900,
     delayMs: 0
-}); */
+});
 
 app.prepare()
     .then(() => {
@@ -33,11 +33,8 @@ app.prepare()
 
 		server.use(helmet());
 
-		/* if (process.env.NODE_ENV === "production") {
-            server.use("/api/", limiter);
-            server.use("/api/new-article-comment", commentLimiter);
-            server.use("/api/new-course-comment", commentLimiter);
-        } */
+        server.use("/lists/update-tv-show-rating", updateRatingLimit);
+        server.use("/lists/update-movie-rating", updateRatingLimit);
 
 		server.use(
 			cookieSession({

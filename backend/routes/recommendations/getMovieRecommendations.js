@@ -17,7 +17,8 @@ const getUsersMoviesWithExy = `
         JOIN movie_list total ON total.movie_id = movie_list.movie_id
     WHERE movie_list.user_id = ?
     GROUP BY movie_list.movie_id
-    ORDER BY movie_list.rating DESC;
+    ORDER BY movie_list.rating DESC
+    LIMIT 100;
 `;
 
 /* 

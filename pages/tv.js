@@ -23,8 +23,6 @@ const TV = ({ details }) => {
 
             {details ?
                 <div className="media pushFooter">
-                    {user ? <button onClick={() => dispatch(addTvShowToList(details, "9.1"))}>Add {details.name} to my TV Show list</button> : null}
-
                     <div className="media_content">
                         <div className="media_content_image_container"><img src={"http://image.tmdb.org/t/p/w185/" + details.poster_path} alt="Poster" /></div>
                         <div className="media_text">
@@ -35,6 +33,7 @@ const TV = ({ details }) => {
                                 <p>First aired on {moment(details.first_air_date).format("DD MMMM, YYYY")}</p>
                                 <p>{details.number_of_episodes} episodes</p>
                                 <p>{details.number_of_seasons} seasons</p>
+                                {user ? <button onClick={() => dispatch(addTvShowToList(details, "9.1"))}>Add {details.name} to my TV Show list</button> : null}
                             </div>
                         </div>
                     </div>
@@ -51,7 +50,7 @@ const TV = ({ details }) => {
                                 ))
                             : null}
                         </div>
-                </div>
+                    </div>
                 </div>
             : 
                 <div>

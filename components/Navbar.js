@@ -64,7 +64,6 @@ const ReusableNavbar = ({ notFixed, user, setRevealMobileNavbar }) => (
 
         <div className="navbar">
             <div className="navbar_left">
-                <Link href="/"><a><img src="/logo.png" alt="Logo" /></a></Link>
                 <Link href="/"><a>Home</a></Link>
                 <Link href="/search"><a>Search</a></Link>
                 <Link href="/my-movies"><a>My Movies</a></Link>
@@ -86,7 +85,6 @@ const MobileNavbar = ({ user, setRevealMobileNavbar }) => (
     <nav className={"navbarMobile"}>        
         <p onClick={() => setRevealMobileNavbar(false)}>✕</p>
 
-        <Link href="/"><a><img src="/logo.png" alt="Logo" /></a></Link>
         <Link href="/"><a>Home</a></Link>
         <Link href="/search"><a>Search</a></Link>
         <Link href="/my-movies"><a>My Movies</a></Link>
