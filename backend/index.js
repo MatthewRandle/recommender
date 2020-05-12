@@ -7,6 +7,7 @@ const xFrameOptions = require("x-frame-options");
 const helmet = require("helmet");
 const keys = require("../config/keys");
 const RateLimit = require("express-rate-limit");
+const sslRedirect = require("heroku-ssl-redirect");
 
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
@@ -32,6 +33,7 @@ app.prepare()
 		const server = express();
 
 		server.use(helmet());
+        server.use(sslRedirect());
 
         server.use("/lists/update-tv-show-rating", updateRatingLimit);
         server.use("/lists/update-movie-rating", updateRatingLimit);
@@ -41,7 +43,7 @@ app.prepare()
 				maxAge: 30 * 24 * 60 * 60 * 1000,
 				keys: [keys.cookieKey],
 				sameSite: "Strict",
-				secureProxy: process.env.NODE_ENV === "production" ? true : false
+                secureProxy: process.env.NODE_ENV === "production" ? true : false
 			})
 		);
 
