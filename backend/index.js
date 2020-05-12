@@ -54,18 +54,6 @@ app.prepare()
         server.get('/sitemap.xml', (req, res) => {
             res.sendFile(path.join(__dirname, '../static', 'sitemap.xml'))
         }) */
-        
-        server.use((req, res, next) => {
-            const hostname = req.hostname === 'www.recommender.herokuapp.com' ? 'recommender.herokuapp.com' : req.hostname;
-
-            if (req.headers['x-forwarded-proto'] === 'http' || req.hostname === 'www.recommender.herokuapp.com') {
-                res.redirect(301, `https://${hostname}${req.url}`);
-                return;
-            }
-
-            res.setHeader('strict-transport-security', 'max-age=31536000; includeSubDomains; preload');
-            next();
-        });
 
 		server.get("/tv/:id", (req, res) => {
 			const actualPage = "/tv";

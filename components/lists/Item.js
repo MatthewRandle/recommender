@@ -70,7 +70,7 @@ const Item = ({ media, length, offset, position, stacked, startingIndex, lastIte
                 : null} */}
 
                 <div className="timeline_item_marker" />
-                <img draggable="false" src={`http://image.tmdb.org/t/p/w342${media.backdrop_path}`} alt="Poster" />
+                <img draggable="false" src={`https://image.tmdb.org/t/p/w342${media.backdrop_path}`} alt="Poster" />
                 
                 <div className="timeline_item_content">
                     <h2>{media.name}</h2>

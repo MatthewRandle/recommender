@@ -9,7 +9,7 @@ const Item = ({ name, poster_path, vote_average, id, type }) => {
 
     return(
         <a href={getHref()} className="item" onClick={() => viewItem()}>
-            <div className="item_image_container"><img src={`http://image.tmdb.org/t/p/w342${poster_path}`} alt="Poster" /></div>
+            <div className="item_image_container"><img src={`https://image.tmdb.org/t/p/w342${poster_path}`} alt="Poster" /></div>
             <h2>{name}</h2>
             {vote_average != null ? <h3>{vote_average}</h3> : null}
         </a>

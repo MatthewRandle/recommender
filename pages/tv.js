@@ -24,7 +24,7 @@ const TV = ({ details }) => {
             {details ?
                 <div className="media pushFooter">
                     <div className="media_content">
-                        <div className="media_content_image_container"><img src={"http://image.tmdb.org/t/p/w185/" + details.poster_path} alt="Poster" /></div>
+                        <div className="media_content_image_container"><img src={"https://image.tmdb.org/t/p/w185/" + details.poster_path} alt="Poster" /></div>
                         <div className="media_text">
                             <h1>{details.name}</h1>
                             <p>{details.overview}</p>
@@ -44,7 +44,7 @@ const TV = ({ details }) => {
                             {details.credits && details.credits.cast && details.credits.cast.length > 0 ?
                                 details.credits.cast.map((person, i) => (
                                     <div className="media_person" key={i}>
-                                        <div className="media_person_image_container"><img src={"http://image.tmdb.org/t/p/w185/" + person.profile_path} alt="Actor Picture" /></div>
+                                        <div className="media_person_image_container"><img src={"https://image.tmdb.org/t/p/w185/" + person.profile_path} alt="Actor Picture" /></div>
                                         <p>{person.name} plays {person.character}</p>
                                     </div>
                                 ))
