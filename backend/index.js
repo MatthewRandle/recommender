@@ -26,6 +26,8 @@ const limiter = new RateLimit({
     delayMs: 0
 });
 
+app.use(sslRedirect());
+
 app.prepare()
     .then(() => {
         require("./services/passport-local");
@@ -33,7 +35,6 @@ app.prepare()
 		const server = express();
 
 		server.use(helmet());
-        server.use(sslRedirect());
 
         server.use("/lists/update-tv-show-rating", updateRatingLimit);
         server.use("/lists/update-movie-rating", updateRatingLimit);
