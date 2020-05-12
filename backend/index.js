@@ -41,7 +41,7 @@ app.prepare()
 				maxAge: 30 * 24 * 60 * 60 * 1000,
 				keys: [keys.cookieKey],
 				sameSite: "Strict",
-				secure: process.env.NODE_ENV === "production" ? true : false
+				secureProxy: process.env.NODE_ENV === "production" ? true : false
 			})
 		);
 
