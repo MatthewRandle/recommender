@@ -7,7 +7,6 @@ const xFrameOptions = require("x-frame-options");
 const helmet = require("helmet");
 const keys = require("../config/keys");
 const RateLimit = require("express-rate-limit");
-const sslRedirect = require("heroku-ssl-redirect");
 
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
