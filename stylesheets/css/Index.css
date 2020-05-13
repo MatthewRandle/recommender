@@ -5,9 +5,37 @@
   padding-bottom: 100px;
 }
 
+@media only screen and (max-width: 1200px) {
+  .home {
+    width: 100%;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .home {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .home {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
 .home h2 {
   font-family: "Roboto Slab", sans-serif;
   color: #2c2c2c;
+}
+
+@media only screen and (max-width: 1200px) {
+  .home h2 {
+    font-size: 1.3rem;
+  }
 }
 
 .home section {
@@ -19,6 +47,20 @@
   position: relative;
   margin-top: 30px;
   padding-bottom: 20px;
+}
+
+@media only screen and (max-width: 768px) {
+  .home section {
+    -ms-grid-columns: (1fr)[3];
+        grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .home section {
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .home button {

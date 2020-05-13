@@ -4,11 +4,30 @@
     width: 750px;
     padding-top: 50px;
     text-align: center;
+
+    @include tablet-down() {
+        width: 100%;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    @include phone-down() {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
 }
 
 .search h1 {
     font-family: "Roboto Slab", sans-serif;
     color: $darkGray;
+
+    @include tablet-down() {
+        font-size: 1.4rem;
+    }
+
+    @include phone-down() {
+        font-size: 1.2rem;
+    }
 }
 
 .search input {
@@ -37,6 +56,10 @@
 
 .search_result_image_container {
     width: 100px;
+
+    @include phone-down() {
+        display: none;
+    }
 } 
 
 .search_result_image_container img {
@@ -46,6 +69,11 @@
 .search_result_text {
     padding: 30px;
     width: 650px;
+
+    @include tablet-down() {
+        width: 100%;
+        padding: 15px;
+    }
 }
 
 .search_result_text h2 {

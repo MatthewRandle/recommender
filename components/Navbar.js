@@ -40,7 +40,7 @@ const Navbar = ({ notFixed }) => {
     };
 
     return(
-        <div>
+        <div style={{ width: "100%" }}>
             <nav style={{ width: "100%", backgroundColor: notFixed ? "transparent" : "white" }}>
                 <ReusableNavbar user={user} setRevealMobileNavbar={setRevealMobileNavbar} notFixed />
 

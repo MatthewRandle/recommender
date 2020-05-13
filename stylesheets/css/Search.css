@@ -5,9 +5,36 @@
   text-align: center;
 }
 
+@media only screen and (max-width: 768px) {
+  .search {
+    width: 100%;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .search {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
 .search h1 {
   font-family: "Roboto Slab", sans-serif;
   color: #2c2c2c;
+}
+
+@media only screen and (max-width: 768px) {
+  .search h1 {
+    font-size: 1.4rem;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .search h1 {
+    font-size: 1.2rem;
+  }
 }
 
 .search input {
@@ -42,6 +69,12 @@
   width: 100px;
 }
 
+@media only screen and (max-width: 480px) {
+  .search_result_image_container {
+    display: none;
+  }
+}
+
 .search_result_image_container img {
   width: 100%;
 }
@@ -49,6 +82,13 @@
 .search_result_text {
   padding: 30px;
   width: 650px;
+}
+
+@media only screen and (max-width: 768px) {
+  .search_result_text {
+    width: 100%;
+    padding: 15px;
+  }
 }
 
 .search_result_text h2 {

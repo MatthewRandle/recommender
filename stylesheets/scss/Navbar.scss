@@ -75,7 +75,7 @@
 
 .navbar_authButton {
     background-color: $purple;
-    color: $darkBlue;
+    color: $darkGray;
     padding: 7px;
     padding-left: 20px;
     padding-right: 20px;
@@ -88,25 +88,6 @@
     cursor: pointer;
     font-size: 0.725rem;
     margin-right: 0px !important;
-
-    &:after,
-    &:before {
-        top: 65%;
-        right: 0;
-        border: solid transparent;
-        content: " ";
-        height: 0;
-        width: 0;
-        position: absolute;
-        pointer-events: none;
-    }
-
-    &:after {
-        border-top-color: $purple;
-        border-width: 9px;
-        transform: rotateZ(90deg);
-        //margin-left: -10px;
-    }
 }
 
 .navbarMobile {
@@ -144,7 +125,7 @@
 
 .navbarMobile_authButton {
     background-color: $purple;
-    color: $darkBlue;
+    color: $darkGray;
     padding: 14px;
     padding-left: 40px;
     padding-right: 40px;
@@ -157,23 +138,4 @@
     cursor: pointer;
     font-size: 1.4rem;
     margin-right: 0px !important;
-
-    &:after,
-    &:before {
-        top: 60%;
-        right: 0;
-        border: solid transparent;
-        content: " ";
-        height: 0;
-        width: 0;
-        position: absolute;
-        pointer-events: none;
-    }
-
-    &:after {
-        border-top-color: $purple;
-        border-width: 18px;
-        transform: rotateZ(90deg);
-        //margin-left: -10px;
-    }
 }

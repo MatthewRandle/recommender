@@ -14,6 +14,12 @@
   width: 1150px;
 }
 
+@media only screen and (max-width: 1200px) {
+  .list {
+    width: 90%;
+  }
+}
+
 /* TIMELINE RANGE SLIDER */
 input[type=range] {
   -webkit-appearance: none;

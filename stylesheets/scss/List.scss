@@ -9,6 +9,10 @@
 
 .list {
     width: 1150px;
+
+    @include desktop-down() {
+        width: 90%;
+    }
 }
 
 /* TIMELINE RANGE SLIDER */

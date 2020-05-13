@@ -17,6 +17,11 @@
     cursor: pointer;
     display: flex;
     align-items: center;
+
+    @include desktop-down() {
+        flex-direction: column;
+        height: auto;
+    }
 }
 
 .timeline_item_marker {
@@ -42,15 +47,31 @@
 .timeline_item_left {
     flex-direction: row-reverse;
     border-right: 1px solid $darkGray;
+
+    @include desktop-down() {
+        flex-direction: column;
+    }
 }
 
 .timeline_item img {
     height: 100%;
     user-select: none;
+
+    @include desktop-down() {
+        width: 50%;
+    }
+
+    @include tablet-down() {
+        width: 100%;
+    }
 }
 
 .timeline_item_content {
     padding: 20px;
+
+    @include desktop-down() {
+        width: 100%;
+    }
 }
 
 .timeline_item_content button {
@@ -66,6 +87,11 @@
     &:focus {
         outline: none;
     }
+
+    @include desktop-down() {
+        margin-left: 50%;
+        transform: translateX(-50%);
+    }
 }
 
 .timeline_item_content h2 {
@@ -78,14 +104,26 @@
     padding: 30px;
     font-family: "Source Code Pro", sans-serif;
     font-size: 1.5rem;
+
+    @include desktop-down() {
+        padding: 10px;
+    }
 }
 
 .timeline_item_right h3 {
     margin-left: auto;
+
+    @include desktop-down() {
+        margin: 0;
+    }
 }
 
 .timeline_item_left h3 {
     margin-right: auto;
+
+    @include desktop-down() {
+        margin: 0;
+    }
 }
 
 .timeline_item_left {
@@ -110,6 +148,3 @@
     background-color: rgb(219, 219, 219);
     border: none;
 }
-
-
-

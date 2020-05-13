@@ -6,15 +6,7 @@ const Footer = () => {
         <footer className="footer">
             <div className="footer_top">
                 <div className="footer_column">
-                    <img src="/logo.png" alt="Commenze Logo" />
-                    <p>contact@commenze.com</p>
-                </div>
-
-                <div className="footer_column">
-                    <h2>Resources</h2>
-                    <Link href="/documentation"><a>Documentation</a></Link>
-                    <Link href="/pricing"><a>Pricing</a></Link>
-                    <Link href="/features"><a>Features</a></Link>
+                    <img src="/logo.png" alt="Recommender Logo" />
                 </div>
 
                 <div className="footer_column">
@@ -27,15 +19,7 @@ const Footer = () => {
 
             <div className="footer_bottom">
                 <div className="footer_bottom_content">
-                    <div>
-                        <h2>Sign up to our newsletter</h2>
-                        <p>Never miss out on new features and changes</p>
-                    </div>
-
-                    <form>
-                        <input type="email" name="email" />
-                        <button type="submit">SUBSCRIBE</button>
-                    </form>
+                    <p>Matthew Randle, w16016867, matthew.randle@northumbria.ac.uk</p>
                 </div>
             </div>
         </footer>

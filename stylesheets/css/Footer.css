@@ -15,7 +15,15 @@
 }
 
 .footer_bottom_content {
-  width: 1200px;
+  width: 1150px;
+}
+
+@media only screen and (max-width: 1200px) {
+  .footer_bottom_content {
+    width: 100%;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
 }
 
 .footer_top,
@@ -36,8 +44,28 @@
 }
 
 .footer_top {
-  width: 1200px;
+  width: 1150px;
   height: 300px;
+}
+
+@media only screen and (max-width: 1200px) {
+  .footer_top {
+    width: 100%;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .footer_top {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
 }
 
 .footer_top h2,
@@ -54,19 +82,7 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  height: 85px;
-}
-
-.footer_bottom_content {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  height: 50px;
 }
 
 .footer_top img {
@@ -83,6 +99,12 @@
           flex-direction: column;
 }
 
+@media only screen and (max-width: 768px) {
+  .footer_column {
+    margin-bottom: 20px;
+  }
+}
+
 .footer_top a,
 .footer_top p {
   color: #2c2c2c;
@@ -97,36 +119,5 @@
 .footer_bottom h2,
 .footer_bottom p {
   color: #eeeeee;
-}
-
-.footer_bottom p {
-  margin-top: 10px;
-}
-
-.footer_bottom form {
-  height: 30px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.footer_bottom form button {
-  font-family: "Roboto Slab", sans-serif;
-  color: #2c2c2c;
-  background-color: #e1d1ff;
-  border: none;
-  height: 100%;
-  padding-right: 20px;
-  padding-left: 20px;
-  cursor: pointer;
-}
-
-.footer_bottom form input {
-  height: 100%;
-  width: 300px;
-  border: none;
 }
 /*# sourceMappingURL=Footer.css.map */

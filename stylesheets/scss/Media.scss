@@ -8,6 +8,20 @@
     align-items: flex-start;
     padding-top: 50px;
     padding-bottom: 100px;
+
+    @include desktop-down() {
+        width: 100%;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    @include tablet-down() {
+        padding-top: 25px;
+    }
+
+    @include phone-down() {
+        padding-top: 10px;
+    }
 }
 
 .media button {
@@ -28,6 +42,11 @@
 .media_content {
     display: flex;
     height: 300px;
+
+    @include tablet-down() {
+        height: auto;
+        flex-direction: column;
+    }
 }
 
 .media_content_image_container {
@@ -44,6 +63,14 @@
     border-bottom: 1px solid rgb(221, 221, 221);
     display: flex;
     flex-direction: column;
+
+    @include tablet-down() {
+        padding: 15px;
+    }
+
+    @include phone-down() {
+        padding: 0;
+    }
 }
 
 .media_text h1 {
@@ -61,6 +88,14 @@
     justify-content: space-between;
     margin-top: auto;
     font-family: "Roboto", sans-serif;
+
+    @include desktop-down() {
+        flex-wrap: wrap;
+    }
+
+    @include tablet-down() {
+        flex-direction: column;
+    }
 }
 
 .media_cast_container {
@@ -77,12 +112,26 @@
     display: grid;
     grid-gap: 30px;
     grid-template-columns: repeat(6, 1fr);
+
+    @include tablet-down() {
+        grid-gap: 20px;
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    @include phone-down() { 
+        grid-gap: 10px;
+        grid-template-columns: repeat(3, 1fr); padding: 0;
+    }
 }
 
 .media_person p {
     font-family: "Roboto Slab", sans-serif;
     color: $darkGray;
     margin-top: 10px;
+
+    @include desktop-down() {
+        font-size: 0.8rem;
+    }
 }
 
 .media_person_image_container img {

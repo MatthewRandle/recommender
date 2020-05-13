@@ -45,7 +45,7 @@ const Movie = ({ details }) => {
                                 details.credits.cast.map((person, i) => (
                                     <div className="media_person" key={i}>
                                         <div className="media_person_image_container"><img src={"https://image.tmdb.org/t/p/w185/" + person.profile_path} alt="Actor Picture" /></div>
-                                        <p>{person.name} plays {person.character}</p>
+                                        <p>{person.name}</p>
                                     </div>
                                 ))
                             : null}

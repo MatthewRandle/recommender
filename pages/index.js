@@ -101,7 +101,7 @@ const Index = () => {
                                     <Item
                                         key={i}
                                         id={movie.id}
-                                        name={movie.name}
+                                        name={movie.title}
                                         poster_path={movie.poster_path}
                                         vote_average={movie.rating}
                                         type="movie"
@@ -163,7 +163,7 @@ const Index = () => {
                                 <Item
                                     key={i}
                                     id={show.id}
-                                    name={show.title}
+                                    name={show.name}
                                     poster_path={show.poster_path}
                                     vote_average={show.vote_average}
                                     type="tv"

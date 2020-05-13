@@ -16,6 +16,26 @@
   padding-bottom: 100px;
 }
 
+@media only screen and (max-width: 1200px) {
+  .media {
+    width: 100%;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .media {
+    padding-top: 25px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .media {
+    padding-top: 10px;
+  }
+}
+
 .media button {
   padding: 10px;
   padding-left: 40px;
@@ -36,6 +56,16 @@
   display: -ms-flexbox;
   display: flex;
   height: 300px;
+}
+
+@media only screen and (max-width: 768px) {
+  .media_content {
+    height: auto;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
 }
 
 .media_content_image_container {
@@ -59,6 +89,18 @@
           flex-direction: column;
 }
 
+@media only screen and (max-width: 768px) {
+  .media_text {
+    padding: 15px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .media_text {
+    padding: 0;
+  }
+}
+
 .media_text h1 {
   font-family: "Roboto Slab", sans-serif;
 }
@@ -80,6 +122,22 @@
   font-family: "Roboto", sans-serif;
 }
 
+@media only screen and (max-width: 1200px) {
+  .media_text_bottom {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .media_text_bottom {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
 .media_cast_container {
   margin-top: 30px;
   width: 100%;
@@ -98,10 +156,33 @@
       grid-template-columns: repeat(6, 1fr);
 }
 
+@media only screen and (max-width: 768px) {
+  .media_cast {
+    grid-gap: 20px;
+    -ms-grid-columns: (1fr)[4];
+        grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .media_cast {
+    grid-gap: 10px;
+    -ms-grid-columns: (1fr)[3];
+        grid-template-columns: repeat(3, 1fr);
+    padding: 0;
+  }
+}
+
 .media_person p {
   font-family: "Roboto Slab", sans-serif;
   color: #2c2c2c;
   margin-top: 10px;
+}
+
+@media only screen and (max-width: 1200px) {
+  .media_person p {
+    font-size: 0.8rem;
+  }
 }
 
 .media_person_image_container img {

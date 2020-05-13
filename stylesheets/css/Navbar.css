@@ -87,7 +87,7 @@
 
 .navbar_authButton {
   background-color: #e1d1ff;
-  color: #043C47;
+  color: #2c2c2c;
   padding: 7px;
   padding-left: 20px;
   padding-right: 20px;
@@ -100,24 +100,6 @@
   cursor: pointer;
   font-size: 0.725rem;
   margin-right: 0px !important;
-}
-
-.navbar_authButton:after, .navbar_authButton:before {
-  top: 65%;
-  right: 0;
-  border: solid transparent;
-  content: " ";
-  height: 0;
-  width: 0;
-  position: absolute;
-  pointer-events: none;
-}
-
-.navbar_authButton:after {
-  border-top-color: #e1d1ff;
-  border-width: 9px;
-  -webkit-transform: rotateZ(90deg);
-          transform: rotateZ(90deg);
 }
 
 .navbarMobile {
@@ -162,7 +144,7 @@
 
 .navbarMobile_authButton {
   background-color: #e1d1ff;
-  color: #043C47;
+  color: #2c2c2c;
   padding: 14px;
   padding-left: 40px;
   padding-right: 40px;
@@ -175,23 +157,5 @@
   cursor: pointer;
   font-size: 1.4rem;
   margin-right: 0px !important;
-}
-
-.navbarMobile_authButton:after, .navbarMobile_authButton:before {
-  top: 60%;
-  right: 0;
-  border: solid transparent;
-  content: " ";
-  height: 0;
-  width: 0;
-  position: absolute;
-  pointer-events: none;
-}
-
-.navbarMobile_authButton:after {
-  border-top-color: #e1d1ff;
-  border-width: 18px;
-  -webkit-transform: rotateZ(90deg);
-          transform: rotateZ(90deg);
 }
 /*# sourceMappingURL=Navbar.css.map */
