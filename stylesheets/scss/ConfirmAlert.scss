@@ -1,0 +1,56 @@
+@import "_variables";
+
+.confirmAlert {
+    position: fixed;
+    z-index: 10;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 30px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+
+    @include phone-down() {
+        width: 95%;
+    }
+}
+
+.confirmAlert h2 {
+    font-family: "Roboto Slab", sans-serif;
+    color: $darkGray;
+    text-align: center;
+    line-height: 1.3em;
+
+    @include phone-down() {
+        font-size: 1.2rem;
+    }
+}
+
+.confirmAlert_buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+    margin-top: 75px;
+}
+
+.confirmAlert_buttons button {
+    width: 48%;
+    height: 40px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    @include border;
+    font-family: "Roboto", sans-serif;
+    font-size: 1rem;
+}
+
+.confirmAlert_buttons button:first-of-type {
+    background-color: $purple;
+}
+
+.confirmAlert_buttons button:last-of-type {
+    background-color: gray;
+    color: white;
+}

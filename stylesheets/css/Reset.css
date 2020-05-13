@@ -20,6 +20,12 @@
           flex: 1;
 }
 
+.recommender_blur {
+  -webkit-filter: blur(3px);
+          filter: blur(3px);
+  pointer-events: none;
+}
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,

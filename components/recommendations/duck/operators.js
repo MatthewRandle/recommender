@@ -5,7 +5,9 @@ import {
     putMovieRecommendations,
     putTvShowRecommendations,
     putTrendingMovies,
-    putTrendingTvShows
+    putTrendingTvShows,
+    putActorsMovies,
+    putActorsShows
 } from "./slice";
 import errorHandler from "../../../utils/errorHandler";
 import getRouteString from "../../../utils/getRouteString";
@@ -39,6 +41,46 @@ export const getTrendingTvShows = () => async dispatch => {
             putError,
             "There was a problem whilst getting trending tv shows.",
             "ERR_TV_SHOWS_TRENDING_ERROR",
+            false
+        ));
+    }
+};
+
+export const getMovieRecommendationsFromActor = (req) => async dispatch => {
+    try {
+        const res = await axios.post(getRouteString("/recommendations/get-movie-actor", req), { user: req ? req.user : null });
+
+        const getMoviesFromActor = `https://api.themoviedb.org/3/person/${res.data.actor.id}/movie_credits?api_key=abed60834d8a74d3044fac789f6c7c07&language=en-US`;
+        const movies = await axios.get(getMoviesFromActor);
+
+        dispatch(putActorsMovies({ actorsMovies: movies.data.cast, actorForMovieRecommendations: res.data.actor.name }));
+    }
+    catch (err) {
+        dispatch(errorHandler(
+            err,
+            putError,
+            "There was a problem whilst getting recommendations based on movie actor.",
+            "ERR_MOVIE_ACTOR_RECOMMENDATION_ERROR",
+            false
+        ));
+    }
+};
+
+export const getTVShowRecommendationsFromActor = (req) => async dispatch => {
+    try {
+        const res = await axios.post(getRouteString("/recommendations/get-tv-show-actor", req), { user: req ? req.user : null });
+
+        const getTVShowsFromActor = `https://api.themoviedb.org/3/person/${res.data.actor.id}/tv_credits?api_key=abed60834d8a74d3044fac789f6c7c07&language=en-US`;
+        const shows = await axios.get(getTVShowsFromActor);
+
+        dispatch(putActorsShows({ actorShows: shows.data.cast, actorForTVShowRecommendations: res.data.actor.name }));
+    }
+    catch (err) {
+        dispatch(errorHandler(
+            err,
+            putError,
+            "There was a problem whilst getting recommendations based on movie actor.",
+            "ERR_MOVIE_ACTOR_RECOMMENDATION_ERROR",
             false
         ));
     }

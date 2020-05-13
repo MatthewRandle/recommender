@@ -6,7 +6,14 @@ import Footer from "../components/Footer";
 import initialSetupFetch from "../utils/initialSetupFetch";
 import Navbar from "../components/Navbar";
 import Item from "../components/recommendations/Item";
-import { getMovieRecommendations, getTvShowRecommendations, getTrendingMovies, getTrendingTvShows } from "../components/recommendations/duck";
+import { 
+    getMovieRecommendations, 
+    getTvShowRecommendations, 
+    getTrendingMovies, 
+    getTrendingTvShows, 
+    getMovieRecommendationsFromActor,
+    getTVShowRecommendationsFromActor
+} from "../components/recommendations/duck";
 
 const Index = () => {
     const user = useSelector(state => state.app ? state.app.user : null);
@@ -15,6 +22,10 @@ const Index = () => {
     const movieRecommendations = useSelector(state => state.recommendations ? state.recommendations.movieRecommendations : []);
     const trendingMovies = useSelector(state => state.recommendations ? state.recommendations.trendingMovies : []);
     const trendingTvShows = useSelector(state => state.recommendations ? state.recommendations.trendingTvShows : []);
+    const actorsMovies = useSelector(state => state.recommendations ? state.recommendations.actorsMovies : []);
+    const actorForMovieRecommendations = useSelector(state => state.recommendations ? state.recommendations.actorForMovieRecommendations : []);
+    const actorShows = useSelector(state => state.recommendations ? state.recommendations.actorShows : []);
+    const actorForTVShowRecommendations = useSelector(state => state.recommendations ? state.recommendations.actorForTVShowRecommendations : []);
 
     const [amountOfTrendingMovies, setAmountOfTrendingMovies] = useState(6);
     const [amountOfTrendingTvShows, setAmountOfTrendingTvShows] = useState(6);
@@ -80,6 +91,48 @@ const Index = () => {
                     </div>
                 : null}
 
+                {user && actorsMovies && actorsMovies.length > 0 ?
+                    <div>
+                        <h2>Recommended Movies Based On {actorForMovieRecommendations}</h2>
+                        <section>
+                            {actorsMovies.map((movie, i) => {
+                                if (i >= 6) return;
+                                return (
+                                    <Item
+                                        key={i}
+                                        id={movie.id}
+                                        name={movie.name}
+                                        poster_path={movie.poster_path}
+                                        vote_average={movie.rating}
+                                        type="movie"
+                                    />
+                                );
+                            })}
+                        </section>
+                    </div>
+                : null}
+
+                {user && actorShows && actorShows.length > 0 ?
+                    <div>
+                        <h2>Recommended Movies Based On {actorForTVShowRecommendations}</h2>
+                        <section>
+                            {actorShows.map((show, i) => {
+                                if (i >= 6) return;
+                                return (
+                                    <Item
+                                        key={i}
+                                        id={show.id}
+                                        name={show.name}
+                                        poster_path={show.poster_path}
+                                        vote_average={show.rating}
+                                        type="tv"
+                                    />
+                                );
+                            })}
+                        </section>
+                    </div>
+                    : null}
+
                 <h2>Trending Movies</h2>
                 <section>
                     {trendingMovies && trendingMovies.length > 0 ?
@@ -130,6 +183,9 @@ const Index = () => {
 
 Index.getInitialProps = async function ({ query, store, req, res }) {
     await initialSetupFetch(store, req);
+
+    await store.dispatch(getMovieRecommendationsFromActor(req));
+    await store.dispatch(getTVShowRecommendationsFromActor(req));
 
     let state = store.getState();
     if (state.app && state.app.user) {

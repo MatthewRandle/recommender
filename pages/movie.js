@@ -1,17 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import Head from "next/head";
 import axios from "axios";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import moment from "moment";
 
+import AddToList from "../components/search/AddToList";
 import Footer from "../components/Footer";
 import initialSetupFetch from "../utils/initialSetupFetch";
 import Navbar from "../components/Navbar";
-import { addMovieToList } from "../components/lists/duck";
 
 const Movie = ({ details }) => {
-    const dispatch = useDispatch();
     const user = useSelector(state => state.app ? state.app.user : null);
+    const [showAddToList, setShowAddToList] = useState(false);
 
     return(
         <div style={{ height: "100vh", display: "flex", flexDirection: "column", alignItems: "center" }}>
@@ -23,6 +23,8 @@ const Movie = ({ details }) => {
 
             {details ?
                 <div className="media pushFooter">
+                    {showAddToList ? <AddToList type="movie" details={details} /> : null}
+
                     <div className="media_content">
                         <div className="media_content_image_container"><img src={"https://image.tmdb.org/t/p/w185/" + details.poster_path} alt="Poster" /></div>
                         <div className="media_text">
@@ -31,7 +33,7 @@ const Movie = ({ details }) => {
 
                             <div className="media_text_bottom">
                                 <p>Released {moment(details.release_date).format("DD MMMM, YYYY")}</p>
-                                {user ? <button onClick={() => dispatch(addMovieToList(details, "9.1"))}>Add {details.name} to my Movie list</button> : null}
+                                {user ? <button onClick={() => setShowAddToList(true)}>Add {details.name} to my Movie list</button> : null}
                             </div>
                         </div>
                     </div>

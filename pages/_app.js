@@ -10,7 +10,9 @@ import Head from "next/head";
 import Error from "../components/Error";
 import rootReducer from "../utils/rootReducer";
 
+import "../stylesheets/css/AddToList.css";
 import "../stylesheets/css/Auth.css";
+import "../stylesheets/css/ConfirmAlert.css";
 import "../stylesheets/css/Footer.css";
 import "../stylesheets/css/Index.css";
 import "../stylesheets/css/List.css";

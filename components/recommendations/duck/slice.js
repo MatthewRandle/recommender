@@ -19,6 +19,16 @@ const RecommendationSlice = createSlice({
         putTrendingTvShows(state, action) {
             if (state == null) return { ...action.payload };
             state.trendingTvShows = action.payload.trendingTvShows;
+        },
+        putActorsMovies(state, action) {
+            if (state == null) return { ...action.payload };
+            state.actorsMovies = action.payload.actorsMovies;
+            state.actorForMovieRecommendations = action.payload.actorForMovieRecommendations;
+        },
+        putActorsShows(state, action) {
+            if (state == null) return { ...action.payload };
+            state.actorShows = action.payload.actorShows;
+            state.actorForTVShowRecommendations = action.payload.actorForTVShowRecommendations;
         }
     }
 });
@@ -27,6 +37,8 @@ export const {
     putMovieRecommendations,
     putTvShowRecommendations,
     putTrendingMovies,
-    putTrendingTvShows
+    putTrendingTvShows,
+    putActorsMovies,
+    putActorsShows
 } = RecommendationSlice.actions;
 export default RecommendationSlice.reducer;

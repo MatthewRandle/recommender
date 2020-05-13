@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 
 import Item from "./Item";
 
-const Timeline = ({ list, steps, updateMedia }) => {
+const Timeline = ({ list, steps, updateMedia, deleteMedia }) => {
     const [offset, setOffset] = useState(null);
     const [bottomYPos, setBottomYPos] = useState(null);
     const [length, setLength] = useState(0);
@@ -50,6 +50,7 @@ const Timeline = ({ list, steps, updateMedia }) => {
                                         length={length} 
                                         offset={offset} 
                                         updateMedia={updateMedia}
+                                        deleteMedia={deleteMedia}
                                         iteration={k}
                                     />
                                 );
@@ -66,6 +67,7 @@ const Timeline = ({ list, steps, updateMedia }) => {
                                     length={length} 
                                     offset={offset} 
                                     updateMedia={updateMedia}
+                                    deleteMedia={deleteMedia}
                                 />
                             );
                         }

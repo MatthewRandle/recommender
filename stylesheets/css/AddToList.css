@@ -1,0 +1,36 @@
+/* Text on white color */
+.addToList {
+  position: fixed;
+  background-color: white;
+  padding: 35px;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 1;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.addToList label {
+  margin-bottom: 10px;
+  font-family: "Roboto Slab", sans-serif;
+  color: #2c2c2c;
+}
+
+.addToList input {
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  margin-top: 10px;
+}
+
+.addToList button {
+  margin-top: 50px;
+}
+/*# sourceMappingURL=AddToList.css.map */

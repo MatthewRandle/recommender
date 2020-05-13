@@ -1,0 +1,30 @@
+@import "_variables";
+
+.addToList {
+    position: fixed;
+    background-color: white;
+    padding: 35px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    @include border;
+    display: flex;
+    flex-direction: column;
+}
+
+.addToList label {
+    margin-bottom: 10px;
+    font-family: "Roboto Slab", sans-serif;
+    color: $darkGray;
+}
+
+.addToList input {
+    padding: 10px;
+    @include border;
+    margin-top: 10px;
+}
+
+.addToList button {
+    margin-top: 50px;
+}

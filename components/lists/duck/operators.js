@@ -63,6 +63,36 @@ export const addMovieToList = (details, rating) => async dispatch => {
     }
 };
 
+export const deleteMovieFromList = (movieID) => async dispatch => {
+    try {
+        await axios.post("/lists/remove-movie", { movieID });
+    }
+    catch (err) {
+        dispatch(errorHandler(
+            err,
+            putError,
+            "There was a problem removing the specified movie. Please try again later.",
+            "ERR_MOVIE_REMOVE_ERROR",
+            false
+        ));
+    }
+};
+
+export const deleteTVShowFromList = (showID) => async dispatch => {
+    try {
+        await axios.post("/lists/remove-tv-show", { showID });
+    }
+    catch (err) {
+        dispatch(errorHandler(
+            err,
+            putError,
+            "There was a problem removing the specified movie. Please try again later.",
+            "ERR_MOVIE_REMOVE_ERROR",
+            false
+        ));
+    }
+};
+
 export const getTVShowList = (req) => async dispatch => {
     try {
         const res = await axios.post(getRouteString("/lists/get-tv-shows", req), { user: req ? req.user : null });

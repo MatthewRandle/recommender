@@ -2,10 +2,12 @@ import React, { useState, useRef, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import Draggable from "react-draggable";
 
+import ConfirmAlert from "../ConfirmAlert";
+
 /* 
     position: if even it is on the right, odd left
 */
-const Item = ({ media, length, offset, position, stacked, startingIndex, lastItem, updateMedia, iteration }) => {
+const Item = ({ media, length, offset, position, stacked, startingIndex, lastItem, updateMedia, deleteMedia, iteration }) => {
     const dispatch = useDispatch();
     const initialRating = parseFloat(media.rating).toFixed(2);
     const [newRating, setNewRating] = useState(initialRating);
@@ -33,6 +35,15 @@ const Item = ({ media, length, offset, position, stacked, startingIndex, lastIte
 
     const save = () => {
         dispatch(updateMedia(media.id, newRating));
+    }
+
+    const handleRemove = () => {
+        ConfirmAlert({
+            message: `Are you sure you want to remove ${media.name} from your list?`,
+            onSuccess: () => {
+                dispatch(deleteMedia(media.id));
+            }
+        });
     }
 
     return(
@@ -73,8 +84,10 @@ const Item = ({ media, length, offset, position, stacked, startingIndex, lastIte
                 <img draggable="false" src={`https://image.tmdb.org/t/p/w342${media.backdrop_path}`} alt="Poster" />
                 
                 <div className="timeline_item_content">
-                    <h2>{media.name}</h2>
-                    {newRating && newRating !== initialRating ? <button onClick={() => save()}>UPDATE</button> : null}
+                    <div>
+                        <h2 title={media.name}>{media.name.length > 20 ? media.name.substring(0, 20) + "..." : media.name}</h2>                           
+                        {newRating && newRating !== initialRating ? <button onClick={() => save()}>Update</button> : <button onClick={handleRemove}>Remove</button>}
+                    </div>                    
                 </div>
 
                 <h3>{newRating}</h3>

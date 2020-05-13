@@ -13,6 +13,7 @@
       -ms-flex-align: start;
           align-items: flex-start;
   padding-top: 50px;
+  padding-bottom: 100px;
 }
 
 .media button {

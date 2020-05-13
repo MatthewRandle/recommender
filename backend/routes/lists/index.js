@@ -5,4 +5,6 @@ module.exports = app => {
     require("./getMovieList")(app);
     require("./updateTVShowRating")(app);
     require("./updateMovieRating")(app);
+    require("./removeTVShow")(app);
+    require("./removeMovie")(app);
 };

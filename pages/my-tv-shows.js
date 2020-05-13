@@ -8,6 +8,7 @@ import Footer from "../components/Footer";
 import initialSetupFetch from "../utils/initialSetupFetch";
 import forceAuth from "../utils/forceAuth";
 import { getTVShowList, updateTVShowRating } from "../components/lists/duck";
+import { deleteTVShowFromList } from "../components/lists/duck";
 
 const MyTvShows = () => {
     const tvShowList = useSelector(state => state.lists ? state.lists.tvShowList : []);
@@ -36,7 +37,7 @@ const MyTvShows = () => {
 
             <div className="list_container pushFooter">
                 <div className="list">
-                    <Timeline updateMedia={updateTVShowRating} list={tvShowList} steps={steps} />
+                    <Timeline updateMedia={updateTVShowRating} deleteMedia={deleteTVShowFromList} list={tvShowList} steps={steps} />
                 </div>
             </div>
 
