@@ -12,7 +12,8 @@ import {
     getTrendingMovies, 
     getTrendingTvShows, 
     getMovieRecommendationsFromActor,
-    getTVShowRecommendationsFromActor
+    getTVShowRecommendationsFromActor,
+    getMovieRecommendationsFromGenre
 } from "../components/recommendations/duck";
 
 const Index = () => {
@@ -26,6 +27,8 @@ const Index = () => {
     const actorForMovieRecommendations = useSelector(state => state.recommendations ? state.recommendations.actorForMovieRecommendations : []);
     const actorShows = useSelector(state => state.recommendations ? state.recommendations.actorShows : []);
     const actorForTVShowRecommendations = useSelector(state => state.recommendations ? state.recommendations.actorForTVShowRecommendations : []);
+    const genreMovies = useSelector(state => state.recommendations ? state.recommendations.genreMovies : []);
+    const genreForMovieRecommendations = useSelector(state => state.recommendations ? state.recommendations.genreForMovieRecommendations : []);
 
     const [amountOfTrendingMovies, setAmountOfTrendingMovies] = useState(6);
     const [amountOfTrendingTvShows, setAmountOfTrendingTvShows] = useState(6);
@@ -68,7 +71,7 @@ const Index = () => {
 
                 {user && tvShowRecommendations && tvShowRecommendations.length > 0 ?
                     <div>
-                        <h2>Recommended Movies Based On Your TV Show List</h2>
+                        <h2>Recommended Shows Based On Your TV Show List</h2>
                         <section>
                             {tvShowRecommendations.map((show, i) => {
                                 if (i >= amountOfRecommendedMovies) return;
@@ -114,7 +117,7 @@ const Index = () => {
 
                 {user && actorShows && actorShows.length > 0 ?
                     <div>
-                        <h2>Recommended Movies Based On {actorForTVShowRecommendations}</h2>
+                        <h2>Recommended TV Shows Based On {actorForTVShowRecommendations}</h2>
                         <section>
                             {actorShows.map((show, i) => {
                                 if (i >= 6) return;
@@ -126,6 +129,27 @@ const Index = () => {
                                         poster_path={show.poster_path}
                                         vote_average={show.rating}
                                         type="tv"
+                                    />
+                                );
+                            })}
+                        </section>
+                    </div>
+                    : null}
+
+                {user && genreMovies && genreMovies.length > 0 ?
+                    <div>
+                        <h2>Recommended Movies Based On {genreForMovieRecommendations}</h2>
+                        <section>
+                            {genreMovies.map((movie, i) => {
+                                if (i >= 6) return;
+                                return (
+                                    <Item
+                                        key={i}
+                                        id={movie.id}
+                                        name={movie.title}
+                                        poster_path={movie.poster_path}
+                                        vote_average={movie.rating}
+                                        type="movie"
                                     />
                                 );
                             })}
@@ -192,12 +216,14 @@ Index.getInitialProps = async function ({ query, store, req, res }) {
             if (state.recommendations.tvShowRecommendations == null) await store.dispatch(getTvShowRecommendations(req));
             if (state.recommendations.actorForMovieRecommendations == null) await store.dispatch(getMovieRecommendationsFromActor(req));
             if (state.recommendations.actorForTVShowRecommendations == null) await store.dispatch(getTVShowRecommendationsFromActor(req));
+            if (state.recommendations.genreMovies == null) await store.dispatch(getMovieRecommendationsFromGenre(req));
         }
         else {
             await store.dispatch(getMovieRecommendations(req));
             await store.dispatch(getTvShowRecommendations(req));
             await store.dispatch(getMovieRecommendationsFromActor(req));
             await store.dispatch(getTVShowRecommendationsFromActor(req));
+            await store.dispatch(getMovieRecommendationsFromGenre(req));
         }    
     }
 

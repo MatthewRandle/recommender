@@ -29,6 +29,11 @@ const RecommendationSlice = createSlice({
             if (state == null) return { ...action.payload };
             state.actorShows = action.payload.actorShows;
             state.actorForTVShowRecommendations = action.payload.actorForTVShowRecommendations;
+        },
+        putGenreMovies(state, action) {
+            if (state == null) return { ...action.payload };
+            state.genreMovies = action.payload.genreMovies;
+            state.genreForMovieRecommendations = action.payload.genreForMovieRecommendations;
         }
     }
 });
@@ -39,6 +44,7 @@ export const {
     putTrendingMovies,
     putTrendingTvShows,
     putActorsMovies,
-    putActorsShows
+    putActorsShows,
+    putGenreMovies
 } = RecommendationSlice.actions;
 export default RecommendationSlice.reducer;

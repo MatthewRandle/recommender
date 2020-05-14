@@ -7,7 +7,8 @@ import {
     putTrendingMovies,
     putTrendingTvShows,
     putActorsMovies,
-    putActorsShows
+    putActorsShows,
+    putGenreMovies
 } from "./slice";
 import errorHandler from "../../../utils/errorHandler";
 import getRouteString from "../../../utils/getRouteString";
@@ -41,6 +42,26 @@ export const getTrendingTvShows = () => async dispatch => {
             putError,
             "There was a problem whilst getting trending tv shows.",
             "ERR_TV_SHOWS_TRENDING_ERROR",
+            false
+        ));
+    }
+};
+
+export const getMovieRecommendationsFromGenre = (req) => async dispatch => {
+    try {
+        const res = await axios.post(getRouteString("/recommendations/get-movie-genre", req), { user: req ? req.user : null });
+
+        const getMoviesFromGenre = `https://api.themoviedb.org/3/discover/movie?api_key=abed60834d8a74d3044fac789f6c7c07&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${res.data.genre.id}`;
+        const movies = await axios.get(getMoviesFromGenre);
+
+        dispatch(putGenreMovies({ genreMovies: movies.data.results, genreForMovieRecommendations: res.data.genre.type }));
+    }
+    catch (err) {
+        dispatch(errorHandler(
+            err,
+            putError,
+            "There was a problem whilst getting recommendations based on movies genre.",
+            "ERR_MOVIE_GENRE_RECOMMENDATION_ERROR",
             false
         ));
     }
