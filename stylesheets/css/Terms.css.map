@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "ACMA,yBAAyB;ADJzB,AAAA,MAAM,CAAC;EACH,KAAK,EAAE,MAAM;CAKhB;;ACGsB,MAAM,MAAM,MAAM,MAAM,SAAS,EAAE,MAAM;EDThE,AAAA,MAAM,CAAC;IAIC,KAAK,EAAE,IAAI;GAElB",
+    "sources": [
+        "../scss/Terms.scss",
+        "../scss/_variables.scss"
+    ],
+    "names": [],
+    "file": "Terms.css"
+}

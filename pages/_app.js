@@ -23,6 +23,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "../stylesheets/css/Reset.css";
 import "../stylesheets/css/Search.css";
 import "../stylesheets/css/Timeline.css";
+import "../stylesheets/css/Terms.css";
 
 const makeStore = (initialState) => {
     return createStore(rootReducer, initialState, applyMiddleware(reduxThunk));

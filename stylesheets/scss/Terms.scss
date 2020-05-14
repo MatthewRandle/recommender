@@ -1,0 +1,9 @@
+@import "_variables";
+
+.terms {
+    width: 1150px;
+
+    @include desktop-down() {
+        width: 100%;
+    }
+}
