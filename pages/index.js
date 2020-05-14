@@ -184,19 +184,20 @@ const Index = () => {
 Index.getInitialProps = async function ({ query, store, req, res }) {
     await initialSetupFetch(store, req);
 
-    await store.dispatch(getMovieRecommendationsFromActor(req));
-    await store.dispatch(getTVShowRecommendationsFromActor(req));
-
     let state = store.getState();
     if (state.app && state.app.user) {
         //if the movieRecommends/tv haven't been fetched yet, fetch them
         if (state.recommendations != null) {
             if (state.recommendations.movieRecommendations == null) await store.dispatch(getMovieRecommendations(req));
             if (state.recommendations.tvShowRecommendations == null) await store.dispatch(getTvShowRecommendations(req));
+            if (state.recommendations.actorForMovieRecommendations == null) await store.dispatch(getMovieRecommendationsFromActor(req));
+            if (state.recommendations.actorForTVShowRecommendations == null) await store.dispatch(getTVShowRecommendationsFromActor(req));
         }
         else {
             await store.dispatch(getMovieRecommendations(req));
             await store.dispatch(getTvShowRecommendations(req));
+            await store.dispatch(getMovieRecommendationsFromActor(req));
+            await store.dispatch(getTVShowRecommendationsFromActor(req));
         }    
     }
 
